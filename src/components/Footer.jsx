@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import '../styles/components.css';
+import logoUrl from '../assets/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +15,7 @@ const Footer = () => {
           {/* Brand Col */}
           <div className="footer-col">
             <Link to="/" className="footer-logo">
-              <img src="../assets/logo.png" alt="Sree Varahi Eye Clinic" className="logo-img" style={{ filter: 'brightness(0) invert(1)' }} />
+              <img src={logoUrl} alt="Sree Varahi Eye Clinic" className="logo-img" style={{ filter: 'brightness(0) invert(1)' }} />
             </Link>
             <p className="footer-desc">
               Providing comprehensive, world-class eye care with advanced technology and a patient-first approach. Your vision is our priority.
@@ -25,9 +26,6 @@ const Footer = () => {
               </a>
               <a href="#" className="social-link" aria-label="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              </a>
-              <a href="#" className="social-link" aria-label="Twitter">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
               </a>
             </div>
           </div>
@@ -88,7 +86,12 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Sree Varahi Eye Clinic. All rights reserved.</p>
+          <div className="footer-copyright">
+            <p>&copy; {currentYear} Sree Varahi Eye Clinic. All rights reserved.</p>
+            <p className="developer-credit" style={{ marginTop: '0.5rem', fontSize: '0.85rem', color: 'var(--color-text-lighter)' }}>
+              Designed & Developed by Priyanka Pradeep | <a href="mailto:hello.priyankapradeepng@gmail.com" style={{ textDecoration: 'underline' }}>hello.priyankapradeepng@gmail.com</a>
+            </p>
+          </div>
           <div className="footer-legal">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms">Terms of Service</Link>

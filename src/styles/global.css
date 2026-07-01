@@ -60,7 +60,13 @@ button {
 }
 
 .section {
-  padding: var(--space-12) 0;
+  padding: var(--space-8) 0; /* 64px on mobile */
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-12) 0; /* 96px on desktop */
+  }
 }
 
 .section-alt {

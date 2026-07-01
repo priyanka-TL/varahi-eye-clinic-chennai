@@ -80,7 +80,10 @@
 .hero-badge {
   position: absolute;
   bottom: -20px;
-  left: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
   background: white;
   padding: 1.5rem;
   border-radius: var(--radius-md);
@@ -90,6 +93,14 @@
   gap: 1rem;
   animation: slideUp 1s ease forwards;
   animation-delay: 0.5s;
+}
+
+@media (min-width: 768px) {
+  .hero-badge {
+    left: -20px;
+    right: auto;
+    margin: 0;
+  }
 }
 
 .hero-badge-icon {
@@ -215,9 +226,15 @@
 
 .about-features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+@media (min-width: 576px) {
+  .about-features {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .feature-item {
@@ -236,10 +253,16 @@
 /* Premium Doctor Hero */
 .doctor-hero {
   position: relative;
-  padding: 100px 0 40px;
+  padding: 80px 0 30px;
   background: linear-gradient(135deg, var(--color-primary) 0%, #082142 100%);
   color: white;
   overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .doctor-hero {
+    padding: 100px 0 40px;
+  }
 }
 
 /* Subtle Medical/Grid Pattern */
@@ -517,7 +540,7 @@
 /* --- Gallery Masonry --- */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 1.5rem;
   grid-auto-flow: dense;
 }

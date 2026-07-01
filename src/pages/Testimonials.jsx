@@ -128,6 +128,16 @@ const Testimonials = () => {
             <span className="section-subtitle">Real Stories</span>
             <h2 className="section-title h2">What Our Patients Say</h2>
             <p className="p-large">We take pride in providing exceptional care and achieving the best outcomes for our patients.</p>
+            <div className="google-rating-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', padding: '0.5rem 1.25rem', borderRadius: '50px', boxShadow: 'var(--shadow-sm)', marginTop: '1.25rem', border: '1px solid var(--color-border)' }}>
+              <div style={{ color: '#FFC107', display: 'flex', gap: '2px' }}>
+                <Star size={18} fill="currentColor" />
+                <Star size={18} fill="currentColor" />
+                <Star size={18} fill="currentColor" />
+                <Star size={18} fill="currentColor" />
+                <Star size={18} fill="currentColor" />
+              </div>
+              <span style={{ fontWeight: '600', fontSize: '0.95rem', color: 'var(--color-primary)' }}>4.8/5 Rating on Google</span>
+            </div>
           </div>
 
           <div className="testimonials-grid">

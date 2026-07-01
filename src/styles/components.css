@@ -151,6 +151,8 @@
   top: 70px;
   left: 0;
   width: 100%;
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
   background: var(--color-bg);
   box-shadow: var(--shadow-md);
   padding: 1rem 0;
@@ -163,6 +165,7 @@
 
 .header-scrolled ~ .mobile-nav {
   top: 60px;
+  max-height: calc(100vh - 60px);
 }
 
 .mobile-nav.open {
