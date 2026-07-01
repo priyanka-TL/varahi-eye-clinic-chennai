@@ -350,10 +350,10 @@
 /* Floating WhatsApp */
 .floating-whatsapp {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
+  bottom: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
   background-color: #25D366;
   color: white;
   border-radius: 50%;
@@ -370,13 +370,19 @@
   color: white;
 }
 
+.floating-whatsapp svg {
+  width: 26px;
+  height: 26px;
+  transition: all var(--transition-fast);
+}
+
 /* Scroll To Top */
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
+  bottom: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
   background-color: var(--color-primary);
   color: white;
   border-radius: 50%;
@@ -393,13 +399,31 @@
   transform: translateY(-3px);
 }
 
+.scroll-to-top svg {
+  width: 22px;
+  height: 22px;
+  transition: all var(--transition-fast);
+}
+
 @media (min-width: 768px) {
   .floating-whatsapp {
     bottom: 30px;
     left: 30px;
+    width: 60px;
+    height: 60px;
+  }
+  .floating-whatsapp svg {
+    width: 32px;
+    height: 32px;
   }
   .scroll-to-top {
     bottom: 30px;
     right: 30px;
+    width: 50px;
+    height: 50px;
+  }
+  .scroll-to-top svg {
+    width: 24px;
+    height: 24px;
   }
 }
