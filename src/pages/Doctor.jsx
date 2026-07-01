@@ -82,7 +82,7 @@ const Doctor = () => {
                 Known for a compassionate, patient-centric approach, Dr. Jayalakshmi Govindan takes the time to understand each patient's unique needs, carefully explaining diagnoses and treatment options. Her expertise spans advanced cataract micro-surgery, LASIK, and comprehensive glaucoma management.
               </p>
 
-              <div className="services-grid" style={{marginBottom: '2rem', gridTemplateColumns: '1fr 1fr'}}>
+              <div className="services-grid" style={{marginBottom: '2rem'}}>
                 <div className="card">
                   <h4 className="h4" style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
                     <GraduationCap className="text-secondary" /> Education
