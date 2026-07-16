@@ -73,8 +73,10 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   width: 100%;
-  height: auto;
+  max-height: 600px;
   object-fit: cover;
+  object-position: top;
+  aspect-ratio: 4 / 5;
 }
 
 .hero-badge {
@@ -419,6 +421,20 @@
 @media (min-width: 992px) {
   .doctor-profile-grid {
     grid-template-columns: 350px 1fr;
+  }
+}
+
+.doctor-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .doctor-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
   }
 }
 

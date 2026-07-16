@@ -48,12 +48,11 @@ const Footer = () => {
           <div className="footer-col">
             <h3 className="footer-title">Our Services</h3>
             <ul className="footer-links">
+              <li><Link to="/services">Glasses Checkup & Dispensing</Link></li>
               <li><Link to="/services">Cataract Surgery</Link></li>
-              <li><Link to="/services">LASIK & Refractive</Link></li>
-              <li><Link to="/services">Glaucoma Treatment</Link></li>
-              <li><Link to="/services">Retina Care</Link></li>
-              <li><Link to="/services">Pediatric Ophthalmology</Link></li>
-              <li><Link to="/services">Optical Store</Link></li>
+              <li><Link to="/services">Glaucoma Screening</Link></li>
+              <li><Link to="/services">Computer Vision Syndrome</Link></li>
+              <li><Link to="/services">Diabetic Eye Screening</Link></li>
             </ul>
           </div>
 
@@ -61,11 +60,19 @@ const Footer = () => {
           <div className="footer-col">
             <h3 className="footer-title">Contact Info</h3>
             <ul className="footer-contact">
-              <li>
-                <MapPin size={20} className="icon" />
+              <li style={{ alignItems: 'flex-start' }}>
+                <MapPin size={20} className="icon" style={{ marginTop: '0.25rem' }} />
                 <span>
-                  <strong>Aikiya health care, Flat GB, Swathi court</strong><br />
-                  43/2, Vijayaraghava Rd, T. Nagar, Chennai, Tamil Nadu 600017
+                  <strong>T. Nagar Branch:</strong><br />
+                  Aikiya health care, Flat GB, Swathi court<br />
+                  43/2, Vijayaraghava Rd, T. Nagar, Chennai 600017
+                </span>
+              </li>
+              <li style={{ alignItems: 'flex-start' }}>
+                <MapPin size={20} className="icon" style={{ marginTop: '0.25rem' }} />
+                <span>
+                  <strong>Kilpauk Branch:</strong><br />
+                  Sree Varahi eye clinic, Kilpauk
                 </span>
               </li>
               <li>

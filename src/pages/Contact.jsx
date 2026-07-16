@@ -10,6 +10,7 @@ const Contact = () => {
     phone: '',
     email: '',
     date: '',
+    branch: 'T. Nagar',
     message: ''
   });
   const [status, setStatus] = useState('');
@@ -32,10 +33,21 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('Submitting...');
+    setStatus('Redirecting to WhatsApp...');
+
+    const text = `*New Appointment Request*
+Name: ${formData.name}
+Phone: ${formData.phone}
+Date: ${formData.date}
+Branch: ${formData.branch}
+Reason: ${formData.message}`;
+
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/919360041641?text=${encodedText}`, '_blank');
+
     setTimeout(() => {
-      setStatus('Success! We will contact you shortly to confirm your appointment.');
-      setFormData({ name: '', phone: '', email: '', date: '', message: '' });
+      setStatus('Success! Request sent via WhatsApp.');
+      setFormData({ name: '', phone: '', email: '', date: '', branch: 'T. Nagar', message: '' });
     }, 1500);
   };
 
@@ -87,8 +99,18 @@ const Contact = () => {
                     <MapPin className="text-secondary" size={24} />
                   </div>
                   <div className="feature-content">
-                    <h4 className="h4">Visit Us</h4>
+                    <h4 className="h4">T. Nagar Branch</h4>
                     <p className="feature-text">Aikiya health care, Flat GB, Swathi court<br />43/2, Vijayaraghava Rd, T. Nagar<br />Chennai, Tamil Nadu 600017</p>
+                  </div>
+                </div>
+
+                <div className="contact-feature-card hover-elevate">
+                  <div className="feature-icon-wrapper bg-secondary-light">
+                    <MapPin className="text-secondary" size={24} />
+                  </div>
+                  <div className="feature-content">
+                    <h4 className="h4">Kilpauk Branch</h4>
+                    <p className="feature-text">Sree Varahi eye clinic<br />Kilpauk, Chennai</p>
                   </div>
                 </div>
 
@@ -104,7 +126,7 @@ const Contact = () => {
               </div>
 
               <div style={{ marginTop: '2rem' }}>
-                <a href="https://wa.me/919360041641" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: 'inline-flex', gap: '0.5rem' }}>
+                <a href="https://wa.me/919360041641?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: 'inline-flex', gap: '0.5rem' }}>
                   <MessageCircle size={20} /> Chat on WhatsApp
                 </a>
               </div>
@@ -140,9 +162,18 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="email">Email Address</label>
-                    <input type="email" id="email" name="email" className="form-input-premium" placeholder="john@example.com" value={formData.email} onChange={handleChange} />
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="branch">Preferred Branch</label>
+                      <select id="branch" name="branch" className="form-input-premium" required value={formData.branch} onChange={handleChange}>
+                        <option value="T. Nagar">T. Nagar Branch</option>
+                        <option value="Kilpauk">Kilpauk Branch</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="email">Email Address</label>
+                      <input type="email" id="email" name="email" className="form-input-premium" placeholder="john@example.com" value={formData.email} onChange={handleChange} />
+                    </div>
                   </div>
 
                   <div className="form-group">
@@ -176,7 +207,7 @@ const Contact = () => {
         <div className="container map-overlay-container">
           <div className="map-info-card slide-up delay-200">
             <h4 className="h4">Sree Varahi Eye Clinic</h4>
-            <p className="p-small" style={{ marginBottom: '1rem', color: 'var(--color-text)' }}>T.Nagar, Chennai, Tamil Nadu</p>
+            <p className="p-small" style={{ marginBottom: '1rem', color: 'var(--color-text)' }}>T.Nagar Branch, Chennai</p>
             <a href="https://www.google.com/maps/place/Sree+Varahi+Eye+Clinic+-+T.Nagar" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-block">
               <Navigation size={18} /> Get Directions
             </a>
