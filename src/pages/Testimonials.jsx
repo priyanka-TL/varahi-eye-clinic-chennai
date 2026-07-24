@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Quote, Star } from 'lucide-react';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema } from '../config/seoHelpers';
 
 const TestimonialCard = ({ testimonial, index }) => {
   const [expanded, setExpanded] = useState(false);
@@ -105,10 +106,12 @@ const Testimonials = () => {
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Patient Testimonials | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Read reviews and testimonials from our happy patients at Sree Varahi Eye Clinic, T.Nagar." />
-      </Helmet>
+      <Seo
+        title="Patient Reviews & Testimonials | Sree Varahi Eye Clinic, T. Nagar"
+        description="Read real Google reviews from patients of Sree Varahi Eye Clinic, T. Nagar, Chennai — cataract surgery, eye checkups, and optical services rated 4.8/5."
+        path="/testimonials"
+        jsonLd={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Testimonials', path: '/testimonials' }])}
+      />
 
       {/* Page Header */}
       <div className="page-header">
@@ -146,10 +149,63 @@ const Testimonials = () => {
             ))}
           </div>
 
-          <div className="text-center" style={{ marginTop: '3rem' }}>
-            <a href="https://www.google.com/maps/place/Sree+Varahi+Eye+Clinic+-+T.Nagar/@13.0436908,80.2429514,15z/data=!4m17!1m8!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!2sSree+Varahi+Eye+Clinic+-+T.Nagar!8m2!3d13.0435465!4d80.2429266!10e5!16s%2Fg%2F11lyvkzbr1!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!8m2!3d13.0435465!4d80.2429266!9m1!1b1!16s%2Fg%2F11lyvkzbr1?entry=ttu&g_ep=EgoyMDI2MDYyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-              Leave a Google Review
-            </a>
+          {/* Leave a Review — QR Scanner Section */}
+          <div className="review-qr-section slide-up">
+            <div className="review-qr-header">
+              <span className="section-subtitle">Share Your Experience</span>
+              <h3 className="h3">Leave Us a Google Review</h3>
+              <p className="p-large" style={{ marginTop: '0.5rem' }}>
+                Scan the QR code for your branch to leave a review instantly — it takes less than a minute!
+              </p>
+            </div>
+
+            <div className="review-qr-grid">
+              {/* T. Nagar Branch */}
+              <div className="review-qr-card">
+                <div className="review-qr-branch-badge">Branch 1</div>
+                <h4 className="review-qr-title">Sree Varahi Eye Clinic</h4>
+                <p className="review-qr-subtitle">T. Nagar, Chennai</p>
+                <div className="review-qr-code-wrapper">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent('https://www.google.com/maps/place/Sree+Varahi+Eye+Clinic+-+T.Nagar/@13.0436908,80.2429514,15z/data=!4m17!1m8!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!2sSree+Varahi+Eye+Clinic+-+T.Nagar!8m2!3d13.0435465!4d80.2429266!10e5!16s%2Fg%2F11lyvkzbr1!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!8m2!3d13.0435465!4d80.2429266!9m1!1b1!16s%2Fg%2F11lyvkzbr1?entry=ttu&g_ep=EgoyMDI2MDYyOC4wIKXMDSoASAFQAw%3D%3D')}&color=0a2e5c&bgcolor=ffffff&margin=1`}
+                    alt="QR code to leave a Google Review for T. Nagar branch"
+                    className="review-qr-img"
+                  />
+                </div>
+                <p className="review-qr-instruction">📱 Scan with your phone camera</p>
+                <a
+                  href="https://www.google.com/maps/place/Sree+Varahi+Eye+Clinic+-+T.Nagar/@13.0436908,80.2429514,15z/data=!4m17!1m8!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!2sSree+Varahi+Eye+Clinic+-+T.Nagar!8m2!3d13.0435465!4d80.2429266!10e5!16s%2Fg%2F11lyvkzbr1!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!8m2!3d13.0435465!4d80.2429266!9m1!1b1!16s%2Fg%2F11lyvkzbr1?entry=ttu&g_ep=EgoyMDI2MDYyOC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary review-qr-btn"
+                >
+                  ⭐ Review T. Nagar Branch
+                </a>
+              </div>
+
+              {/* Kilpauk Branch */}
+              <div className="review-qr-card">
+                <div className="review-qr-branch-badge secondary">Branch 2</div>
+                <h4 className="review-qr-title">Kumaran Hospitals (P) Ltd</h4>
+                <p className="review-qr-subtitle">Kilpauk, Chennai</p>
+                <div className="review-qr-code-wrapper">
+                  <img
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent('https://www.google.com/maps/search/Kumaran+Hospitals+214+PH+Road+Kilpauk+Chennai')}&color=0a2e5c&bgcolor=ffffff&margin=1`}
+                    alt="QR code to leave a Google Review for Kilpauk branch"
+                    className="review-qr-img"
+                  />
+                </div>
+                <p className="review-qr-instruction">📱 Scan with your phone camera</p>
+                <a
+                  href="https://www.google.com/maps/search/Kumaran+Hospitals+214+PH+Road+Kilpauk+Chennai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline review-qr-btn"
+                >
+                  ⭐ Review Kilpauk Branch
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import '../styles/components.css';
-import logoUrl from '../assets/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,9 +13,6 @@ const Footer = () => {
 
           {/* Brand Col */}
           <div className="footer-col">
-            <Link to="/" className="footer-logo">
-              <img src={logoUrl} alt="Sree Varahi Eye Clinic" className="logo-img" style={{ filter: 'brightness(0) invert(1)' }} />
-            </Link>
             <p className="footer-desc">
               Providing comprehensive, world-class eye care with advanced technology and a patient-first approach. Your vision is our priority.
             </p>
@@ -24,7 +20,7 @@ const Footer = () => {
               <a href="#" className="social-link" aria-label="Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
-              <a href="#" className="social-link" aria-label="Instagram">
+              <a href="https://www.instagram.com/drjairajesh?igsh=bXExamg4emY2emM5" className="social-link" aria-label="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
             </div>
@@ -37,7 +33,6 @@ const Footer = () => {
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/doctor">Our Doctor</Link></li>
               <li><Link to="/services">Services</Link></li>
-              <li><Link to="/facilities">Facilities</Link></li>
               <li><Link to="/gallery">Gallery</Link></li>
               <li><Link to="/testimonials">Testimonials</Link></li>
               <li><Link to="/faq">FAQ</Link></li>
@@ -63,16 +58,10 @@ const Footer = () => {
               <li style={{ alignItems: 'flex-start' }}>
                 <MapPin size={20} className="icon" style={{ marginTop: '0.25rem' }} />
                 <span>
-                  <strong>T. Nagar Branch:</strong><br />
-                  Aikiya health care, Flat GB, Swathi court<br />
-                  43/2, Vijayaraghava Rd, T. Nagar, Chennai 600017
-                </span>
-              </li>
-              <li style={{ alignItems: 'flex-start' }}>
-                <MapPin size={20} className="icon" style={{ marginTop: '0.25rem' }} />
-                <span>
-                  <strong>Kilpauk Branch:</strong><br />
-                  Sree Varahi eye clinic, Kilpauk
+                  <strong>Sree Varahi Eye Clinic (T. Nagar):</strong><br />
+                  Aikiya Health Care, Flat GB, Swathi Court,<br />
+                  43/2, Vijayaraghava Rd, T. Nagar, Chennai - 600017<br />
+                  <small style={{ color: 'rgba(255,255,255,0.7)' }}>Mon–Sat: 4:30 PM – 7:00 PM</small>
                 </span>
               </li>
               <li>
@@ -81,11 +70,11 @@ const Footer = () => {
               </li>
               <li>
                 <Mail size={20} className="icon" />
-                <a href="mailto:info@sreevarahieyeclinic.com">info@sreevarahieyeclinic.com</a>
+                <a href="mailto:drjairajesh@yahoo.com">drjairajesh@yahoo.com</a>
               </li>
               <li>
                 <Clock size={20} className="icon" />
-                <span>Mon - Sat: 9:00 AM - 8:00 PM<br />Sun: By Appointment</span>
+                <span>Sun: Closed (Prior Appointment Available)</span>
               </li>
             </ul>
           </div>

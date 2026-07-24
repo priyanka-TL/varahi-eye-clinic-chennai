@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema, buildFaqSchema } from '../config/seoHelpers';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +15,7 @@ const FAQ = () => {
     },
     {
       question: 'What are your clinic timings?',
-      answer: 'Our clinic is open from Monday to Saturday, 9:00 AM to 8:00 PM. We are available on Sundays by prior appointment only. For emergencies, please call our emergency contact number.'
+      answer: 'Our T. Nagar clinic is open Monday to Saturday, 4:30 PM to 7:00 PM. We also consult at Kilpauk, Taramani, Virugambakkam, and Anna Nagar on specific days — see our Contact page for the full schedule. Sundays are by prior appointment only.'
     },
     {
       question: 'Do you accept health insurance?',
@@ -48,10 +49,15 @@ const FAQ = () => {
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>FAQ | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Frequently Asked Questions about Sree Varahi Eye Clinic, appointment booking, treatments, and insurance." />
-      </Helmet>
+      <Seo
+        title="FAQs | Appointments, Treatments & Insurance | Sree Varahi Eye Clinic"
+        description="Answers to common questions about booking an eye checkup in T. Nagar, Chennai — clinic timings, insurance/TPA coverage, LASIK, cataract surgery, and our in-house optical store."
+        path="/faq"
+        jsonLd={[
+          buildFaqSchema(faqs),
+          buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'FAQ', path: '/faq' }]),
+        ]}
+      />
 
       {/* Page Header */}
       <div className="page-header">

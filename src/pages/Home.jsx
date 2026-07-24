@@ -1,17 +1,20 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Activity, Eye, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
 import '../styles/pages.css';
-import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.png';
+import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
+import Seo from '../components/Seo';
+import { buildOrganizationSchema } from '../config/seoHelpers';
 
 const Home = () => {
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Sree Varahi Eye Clinic | Premium Eye Care in T.Nagar, Chennai</title>
-        <meta name="description" content="State-of-the-art eye care hospital in Chennai. Comprehensive treatments including Cataract Surgery, Glaucoma Management, Diabetic Eye Screening, and Computer Vision Syndrome Counseling." />
-      </Helmet>
+      <Seo
+        title="Sree Varahi Eye Clinic | Best Eye Care Clinic in T. Nagar, Chennai"
+        description="Trusted eye clinic in T. Nagar, Chennai offering cataract surgery, glaucoma management, diabetic eye screening & computer vision care. 20+ years experience, 4.9 Google rating. Book your eye checkup today."
+        path="/"
+        jsonLd={buildOrganizationSchema()}
+      />
 
       {/* Hero Section */}
       <section className="hero">
@@ -25,7 +28,7 @@ const Home = () => {
             </h1>
             <p className="hero-desc">
               Experience world-class ophthalmic care at Sree Varahi Eye Clinic.
-              Our advanced technology and experienced specialists ensure the best
+              Our advanced technology and experienced specialist ensure the best
               vision outcomes for you and your family.
             </p>
             <div className="hero-actions">
@@ -57,8 +60,11 @@ const Home = () => {
             {/* Doctor hero image */}
             <img
               src={doctorImg}
-              alt="Dr. Jeyalakshmi Govindan"
+              alt="Dr. Jeyalakshmi Govindan, ophthalmologist at Sree Varahi Eye Clinic, T. Nagar, Chennai"
               className="hero-image"
+              width="1122"
+              height="1402"
+              fetchPriority="high"
             />
             <div className="hero-badge">
               <div className="hero-badge-icon">
@@ -87,7 +93,7 @@ const Home = () => {
             <div className="feature-item slide-up delay-100">
               <Activity className="feature-icon" size={32} />
               <div>
-                <h4 className="h4">Modern Equipment</h4>
+                <h4 className="h4">Less Waiting Time</h4>
                 <p className="p-small">Latest diagnostic technology</p>
               </div>
             </div>
@@ -120,17 +126,17 @@ const Home = () => {
 
           <div className="services-grid">
             {[
-              { title: 'Glasses Checkup & Dispensing', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} /> },
-              { title: 'Cataract Surgery', desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.', icon: <Eye size={32} /> },
-              { title: 'Glaucoma Screening & Management', desc: 'Early diagnosis and advanced management to prevent optic nerve damage.', icon: <ShieldCheck size={32} /> },
-              { title: 'Computer Vision Syndrome', desc: 'Expert care and counseling for digital eye strain and related symptoms.', icon: <Activity size={32} /> },
-              { title: 'Diabetic Eye Screening', desc: 'Specialized screening to detect and manage diabetic retinopathy early.', icon: <Stethoscope size={32} /> }
+              { title: 'Glasses Checkup & Dispensing', slug: 'glasses-checkup', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} /> },
+              { title: 'Cataract Surgery', slug: 'cataract-surgery', desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.', icon: <Eye size={32} /> },
+              { title: 'Glaucoma Screening & Management', slug: 'glaucoma-screening', desc: 'Early diagnosis and advanced management to prevent optic nerve damage.', icon: <ShieldCheck size={32} /> },
+              { title: 'Computer Vision Syndrome', slug: 'computer-vision-syndrome', desc: 'Expert care and counseling for digital eye strain and related symptoms.', icon: <Activity size={32} /> },
+              { title: 'Diabetic Eye Screening', slug: 'diabetic-eye-screening', desc: 'Specialized screening to detect and manage diabetic retinopathy early.', icon: <Stethoscope size={32} /> }
             ].map((service, index) => (
               <div key={index} className={`card service-card slide-up delay-${(index % 3 + 1) * 100}`}>
                 <div className="service-icon">{service.icon}</div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="p-small">{service.desc}</p>
-                <Link to="/services" className="service-link">
+                <Link to={`/services#${service.slug}`} className="service-link">
                   Learn more <ArrowRight size={16} />
                 </Link>
               </div>

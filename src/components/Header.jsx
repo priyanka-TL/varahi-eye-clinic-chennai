@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Calendar } from 'lucide-react';
 import '../styles/components.css';
-import logoUrl from '../assets/logo.png';
+import logoUrl from '../assets/logo-header.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +27,6 @@ const Header = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Doctor', path: '/doctor' },
-    { name: 'Facilities', path: '/facilities' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -45,8 +44,8 @@ const Header = () => {
           <ul className="nav-list">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link 
-                  to={link.path} 
+                <Link
+                  to={link.path}
                   className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
                 >
                   {link.name}
@@ -69,8 +68,8 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
-          className="mobile-toggle" 
+        <button
+          className="mobile-toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -84,8 +83,8 @@ const Header = () => {
           <ul className="mobile-nav-list">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link 
-                  to={link.path} 
+                <Link
+                  to={link.path}
                   className={`mobile-nav-link ${location.pathname === link.path ? 'active' : ''}`}
                 >
                   {link.name}

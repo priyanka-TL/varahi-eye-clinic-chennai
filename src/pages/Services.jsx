@@ -1,12 +1,16 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Eye, Activity, ShieldCheck, Stethoscope, Users, PlusCircle, Search, Sparkles, AlertCircle, CheckCircle2 } from 'lucide-react';
 import '../styles/pages.css';
+import spectaclesImg from '../assets/images/spectacles/tnagar-spectacles-display-01.jpeg';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema } from '../config/seoHelpers';
+import { SITE_URL } from '../config/site';
 
 const Services = () => {
   const servicesList = [
     {
+      slug: 'glasses-checkup',
       title: 'Glasses checkup and dispensing of glasses',
       icon: <Search size={40} />,
       desc: 'Complete eye health check-up to ensure accurate prescription and best fit for glasses.',
@@ -14,6 +18,7 @@ const Services = () => {
       process: 'Visual acuity test, refraction, frame selection, and precise lens fitting.'
     },
     {
+      slug: 'cataract-surgery',
       title: 'Cataract Surgery',
       icon: <Eye size={40} />,
       desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.',
@@ -21,6 +26,7 @@ const Services = () => {
       process: 'Detailed evaluation, precise mapping, safe removal of clouded lens, and IOL implantation.'
     },
     {
+      slug: 'glaucoma-screening',
       title: 'Glaucoma screening and management',
       icon: <ShieldCheck size={40} />,
       desc: 'Early diagnosis and advanced management to prevent optic nerve damage.',
@@ -28,6 +34,7 @@ const Services = () => {
       process: 'Intraocular pressure check, visual field testing, followed by medical or surgical management.'
     },
     {
+      slug: 'computer-vision-syndrome',
       title: 'Computer vision syndrome management and counseling',
       icon: <Activity size={40} />,
       desc: 'Expert care for digital eye strain and related symptoms.',
@@ -35,6 +42,7 @@ const Services = () => {
       process: 'Symptom evaluation, dry eye assessment, customized glasses, and counseling on digital habits.'
     },
     {
+      slug: 'diabetic-eye-screening',
       title: 'Diabetic eye screening',
       icon: <Stethoscope size={40} />,
       desc: 'Specialized screening to detect and manage diabetic retinopathy early.',
@@ -43,12 +51,29 @@ const Services = () => {
     }
   ];
 
+  const servicesSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: servicesList.map((s, i) => ({
+      '@type': 'MedicalProcedure',
+      position: i + 1,
+      name: s.title,
+      description: s.desc,
+      url: `${SITE_URL}/services#${s.slug}`,
+    })),
+  };
+
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Our Services | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Explore our comprehensive eye care services including Glasses Checkup, Cataract Surgery, Glaucoma Management, Computer Vision Syndrome Counseling, and Diabetic Eye Screening." />
-      </Helmet>
+      <Seo
+        title="Eye Care Services | Cataract, Glaucoma & LASIK in T. Nagar, Chennai"
+        description="Cataract surgery, glaucoma screening, computer vision syndrome counseling, diabetic eye screening & glasses dispensing at Sree Varahi Eye Clinic, T. Nagar, Chennai."
+        path="/services"
+        jsonLd={[
+          servicesSchema,
+          buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }]),
+        ]}
+      />
 
       {/* Page Header */}
       <div className="page-header">
@@ -72,7 +97,7 @@ const Services = () => {
 
           <div className="services-grid">
             {servicesList.map((service, index) => (
-              <div key={index} className={`card slide-up delay-${(index % 4) * 100}`} style={{ display: 'flex', flexDirection: 'column' }}>
+              <div key={index} id={service.slug} className={`card slide-up delay-${(index % 4) * 100}`} style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className="service-icon" style={{ background: 'var(--color-primary)', color: 'white' }}>{service.icon}</div>
                 <h3 className="h3 text-primary" style={{ marginBottom: '1rem' }}>{service.title}</h3>
                 <p className="p-small" style={{ marginBottom: '1.5rem' }}>{service.desc}</p>
@@ -117,11 +142,13 @@ const Services = () => {
               <Link to="/contact" className="btn btn-primary">Visit Our Store</Link>
             </div>
             <div className="slide-up delay-200">
-              {/* TODO: Replace with Optical store image */}
               <img
-                src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&w=800&q=80"
-                alt="Optical Store"
+                src={spectaclesImg}
+                alt="Spectacles and frames display at Sree Varahi Eye Clinic's in-house optical store, T. Nagar, Chennai"
                 className="about-image"
+                width="1280"
+                height="576"
+                loading="lazy"
               />
             </div>
           </div>

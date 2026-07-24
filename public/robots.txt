@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://priyanka-tl.github.io/varahi-eye-clinic-chennai/sitemap.xml
