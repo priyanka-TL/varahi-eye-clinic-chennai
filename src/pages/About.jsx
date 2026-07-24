@@ -1,17 +1,20 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Target, Eye as EyeIcon, Heart } from 'lucide-react';
 import '../styles/pages.css';
-import aboutImg from '../assets/images/doctor_photo/aboutPage.png';
+import aboutImg from '../assets/images/doctor_photo/aboutPage.jpg';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema } from '../config/seoHelpers';
 
 const About = () => {
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>About Us | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Learn about Sree Varahi Eye Clinic's history, mission, vision, and core values. We are dedicated to providing affordable, patient-first eye care." />
-      </Helmet>
+      <Seo
+        title="About Us | Patient-First Eye Care in T. Nagar | Sree Varahi Eye Clinic"
+        description="Sree Varahi Eye Clinic in T. Nagar, Chennai offers ethical, affordable eye care with a patient-first approach — cataract & glaucoma treatment by an expert ophthalmologist in the heart of the city."
+        path="/about"
+        jsonLd={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }])}
+      />
 
       {/* Page Header */}
       <div className="page-header">
@@ -58,8 +61,11 @@ const About = () => {
             <div className="slide-up delay-200">
               <img
                 src={aboutImg}
-                alt="Dr. Checking Patient"
+                alt="Doctor examining a patient's eye at Sree Varahi Eye Clinic, T. Nagar, Chennai"
                 className="about-image"
+                width="1189"
+                height="1323"
+                loading="lazy"
               />
             </div>
           </div>
@@ -76,23 +82,23 @@ const About = () => {
             <ul className="p-large" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', backgroundColor: 'var(--color-bg)', padding: '2rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', width: '100%', maxWidth: '800px' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <span>Glasses checkup and dispensing of glasses</span>
+                <Link to="/services#glasses-checkup">Glasses checkup and dispensing of glasses</Link>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <span>Cataract surgery</span>
+                <Link to="/services#cataract-surgery">Cataract surgery</Link>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <span>Glaucoma screening and management</span>
+                <Link to="/services#glaucoma-screening">Glaucoma screening and management</Link>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <span>Computer vision syndrome management and counseling</span>
+                <Link to="/services#computer-vision-syndrome">Computer vision syndrome management and counseling</Link>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <span>Diabetic eye screening</span>
+                <Link to="/services#diabetic-eye-screening">Diabetic eye screening</Link>
               </li>
             </ul>
           </div>

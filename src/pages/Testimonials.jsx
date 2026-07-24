@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Quote, Star } from 'lucide-react';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema } from '../config/seoHelpers';
 
 const TestimonialCard = ({ testimonial, index }) => {
   const [expanded, setExpanded] = useState(false);
@@ -105,10 +106,12 @@ const Testimonials = () => {
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Patient Testimonials | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Read reviews and testimonials from our happy patients at Sree Varahi Eye Clinic, T.Nagar." />
-      </Helmet>
+      <Seo
+        title="Patient Reviews & Testimonials | Sree Varahi Eye Clinic, T. Nagar"
+        description="Read real Google reviews from patients of Sree Varahi Eye Clinic, T. Nagar, Chennai — cataract surgery, eye checkups, and optical services rated 4.8/5."
+        path="/testimonials"
+        jsonLd={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Testimonials', path: '/testimonials' }])}
+      />
 
       {/* Page Header */}
       <div className="page-header">

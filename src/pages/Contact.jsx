@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle, Navigation, ExternalLink, ChevronDown, CheckCircle2, Info, Calendar, ShieldCheck } from 'lucide-react';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
+import { LOCATIONS } from '../config/site';
+import { buildAllLocationsSchema, buildBreadcrumbSchema, buildFaqSchema } from '../config/seoHelpers';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,65 +18,7 @@ const Contact = () => {
   const [status, setStatus] = useState('');
   const [activeFaq, setActiveFaq] = useState(null);
 
-  const locations = [
-    {
-      id: 't-nagar',
-      name: 'Sree Varahi Eye Clinic (T. Nagar Branch)',
-      role: 'Main Clinic Branch',
-      room: 'Aikiya Health Care, Flat GB, Swathi Court',
-      address: '43/2, Vijayaraghava Rd, T. Nagar, Chennai - 600017',
-      landmark: 'Near Vani Mahal',
-      timing: 'Mon to Sat: Evening 4:30 PM - 7:00 PM',
-      badge: 'Evening Clinic (Mon-Sat)',
-      note: 'Sunday Closed (Prior appointment available for Sunday)',
-      mapLink: 'https://www.google.com/maps/search/?api=1&query=Sree+Varahi+Eye+Clinic+43+Vijayaraghava+Road+T+Nagar+Chennai+600017',
-      isPrimary: true,
-      isFeatured: true
-    },
-    {
-      id: 'kilpauk',
-      name: 'Kumaran Hospitals (P) Ltd',
-      role: 'Visiting Glaucoma Consultant',
-      room: 'Room no.11, Ground floor',
-      address: '#214, P.H. road, Kilpauk, Chennai - 600010',
-      landmark: 'Next to Sangam theatre',
-      timing: 'Mon to Sat (except Thursdays): Morning 9:30 AM - 2:00 PM',
-      badge: 'Morning Clinic (Mon-Sat except Thu)',
-      mapLink: 'https://www.google.com/maps/search/Kumaran+Hospitals+214+PH+Road+Kilpauk+Chennai',
-      isPrimary: true
-    },
-    {
-      id: 'taramani',
-      name: 'The Voluntary Health Services (VHS) Multispeciality Hospital',
-      role: 'Visiting Consultant',
-      room: 'Ophthalmology Dept',
-      address: 'State Highway 49A, Taramani, Chennai - 600113',
-      landmark: 'Near Madhya Kailash Temple',
-      timing: 'Thursdays: 10:00 AM - 2:00 PM',
-      badge: 'Thursday Special Clinic',
-      mapLink: 'https://maps.app.goo.gl/DZtccGNZ1kWPEw3T8'
-    },
-    {
-      id: 'virugambakkam',
-      name: 'Keshava Eye Care',
-      role: 'Visiting Consultant (By Appointment)',
-      room: '1st Floor, 5/40, AVM Ave 1st Main Rd',
-      address: 'AVM Avenue, Virugambakkam, Chennai, Tamil Nadu 600092',
-      timing: 'Tuesday & Friday: 2:30 PM (By Appointment)',
-      badge: 'Tue & Fri (By Appointment)',
-      mapLink: 'https://maps.app.goo.gl/VJcFHfzD6y3VpPpB8?g_st=iw'
-    },
-    {
-      id: 'annanagar',
-      name: 'Dhanvantri Eye Care',
-      role: 'Visiting Consultant (By Appointment)',
-      room: 'OLD #18, N Main Rd',
-      address: 'Anna Nagar West Extension, Chennai, Tamil Nadu 600101',
-      timing: 'Monday: 2:30 PM (By Appointment)',
-      badge: 'Monday (By Appointment)',
-      mapLink: 'https://maps.app.goo.gl/phXjhwpVCpZzd6Br7?g_st=aw'
-    }
-  ];
+  const locations = LOCATIONS;
 
   const faqs = [
     { q: "What should I bring to my first appointment?", a: "Please bring your current glasses/contact lenses, any previous medical records, and a list of medications you are currently taking." },
@@ -113,10 +57,16 @@ Reason: ${formData.message}`;
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Contact & Locations | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Find consultation timings, location details, and business hours for Dr. Jai Rajesh across T. Nagar, Kilpauk, Taramani, Virugambakkam, and Anna Nagar in Chennai." />
-      </Helmet>
+      <Seo
+        title="Contact & Locations | Eye Clinic in T. Nagar, Chennai | Sree Varahi Eye Clinic"
+        description="Book an appointment with Dr. Jeyalakshmi Govindan across 5 consultation centers in Chennai: T. Nagar, Kilpauk, Taramani, Virugambakkam & Anna Nagar. Call, WhatsApp, or fill our form."
+        path="/contact"
+        jsonLd={[
+          ...buildAllLocationsSchema(),
+          buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]),
+          buildFaqSchema(faqs.map((f) => ({ question: f.q, answer: f.a }))),
+        ]}
+      />
 
       {/* Page Header */}
       <div className="page-header">
@@ -145,14 +95,14 @@ Reason: ${formData.message}`;
             <span className="section-subtitle">Consultation Centers</span>
             <h2 className="h2">Doctor Availability & Locations</h2>
             <p className="p-large" style={{ marginTop: '0.5rem' }}>
-              Dr. Jai Rajesh consults across 5 convenient centers in Chennai. Select a location below for consultation timings.
+              Dr. Jeyalakshmi Govindan consults across 5 convenient centers in Chennai. Select a location below for consultation timings.
             </p>
           </div>
 
           {/* 2-Column Grid of 5 Locations */}
           <div className="locations-full-grid slide-up delay-100">
             {locations.map((loc, idx) => (
-              <div key={loc.id} className={`location-card hover-elevate ${loc.isFeatured ? 'featured-card' : ''}`}>
+              <div key={loc.id} id={loc.id} className={`location-card hover-elevate ${loc.isFeatured ? 'featured-card' : ''}`}>
                 <div className="location-card-header">
                   <div>
                     <h3 className="location-title">{idx + 1}. {loc.name}</h3>
@@ -236,7 +186,7 @@ Reason: ${formData.message}`;
                   </div>
                   <div>
                     <h4 className="h4" style={{ fontSize: '1.05rem', marginBottom: '0.2rem' }}>Quality Assurance</h4>
-                    <p className="p-small">Comprehensive eye examination & patient-first care by Glaucoma specialist Dr. Jai Rajesh.</p>
+                    <p className="p-small">Comprehensive eye examination & patient-first care by Glaucoma specialist Dr. Jeyalakshmi Govindan.</p>
                   </div>
                 </div>
               </div>

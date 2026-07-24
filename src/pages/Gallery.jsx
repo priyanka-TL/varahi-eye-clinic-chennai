@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { X, ZoomIn } from 'lucide-react';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
+import { buildBreadcrumbSchema } from '../config/seoHelpers';
 
 // ── Categorized image imports ──────────────────────────────────────────────
 const tnagarClinicModules = import.meta.glob('../assets/images/clinic/tnagar-*.{jpeg,jpg,png,webp}', { eager: true });
@@ -87,10 +88,12 @@ const Gallery = () => {
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Gallery | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Take a virtual tour of Sree Varahi Eye Clinic. View our T. Nagar and Kilpauk branches, state-of-the-art equipment, spectacle collections, patient consultations, events, and awards." />
-      </Helmet>
+      <Seo
+        title="Photo Gallery | Sree Varahi Eye Clinic, T. Nagar & Kilpauk, Chennai"
+        description="See inside Sree Varahi Eye Clinic — our T. Nagar and Kilpauk branches, diagnostic equipment, spectacle collections, patient care, community eye camps, and awards."
+        path="/gallery"
+        jsonLd={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Gallery', path: '/gallery' }])}
+      />
 
       {/* Page Header */}
       <div className="page-header">

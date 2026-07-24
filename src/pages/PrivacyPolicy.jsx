@@ -1,15 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
 
 const PrivacyPolicy = () => {
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Privacy Policy | Sree Varahi Eye Clinic</title>
-        <meta name="robots" content="noindex, follow" />
-      </Helmet>
+      <Seo
+        title="Privacy Policy | Sree Varahi Eye Clinic"
+        description="Privacy Policy for Sree Varahi Eye Clinic — how we collect, use, and protect your personal data."
+        path="/privacy-policy"
+        noindex
+      />
 
       <div className="page-header" style={{ padding: '100px 0 40px' }}>
         <div className="container">

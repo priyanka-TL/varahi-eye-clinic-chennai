@@ -1,18 +1,23 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
+import Seo from '../components/Seo';
+import { buildPhysicianSchema, buildBreadcrumbSchema } from '../config/seoHelpers';
 
 const Doctor = () => {
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Our Doctor | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Meet our experienced eye specialist at Sree Varahi Eye Clinic. Highly qualified in modern ophthalmic procedures, LASIK, and cataract surgery." />
-        {/* TODO: Add Doctor Schema here if applicable */}
-      </Helmet>
+      <Seo
+        title="Dr. Jeyalakshmi Govindan | Cataract & Glaucoma Specialist, Chennai"
+        description="Dr. Jeyalakshmi Govindan (MBBS DO DNB) is a senior ophthalmic surgeon with 20+ years experience in cataract & glaucoma care, trained at Sankara Nethralaya. Consults across T. Nagar, Kilpauk, Taramani, Virugambakkam & Anna Nagar, Chennai."
+        path="/doctor"
+        jsonLd={[
+          buildPhysicianSchema(),
+          buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Doctor', path: '/doctor' }]),
+        ]}
+      />
 
       {/* Page Header */}
       <div className="page-header">
@@ -35,8 +40,11 @@ const Doctor = () => {
               <div className="doctor-image-container mb-4">
                 <img
                   src={doctorImg}
-                  alt="Dr. Jeyalakshmi Govindan"
+                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB, cataract & glaucoma specialist in Chennai"
                   className="doctor-image"
+                  width="1122"
+                  height="1402"
+                  loading="lazy"
                 />
               </div>
 
@@ -83,7 +91,7 @@ const Doctor = () => {
                 She has served as senior consultant in Sankara Nethralaya for 12 years and has trained many budding ophthalmologists. She is known for handling any kind of patients with smile and patience. She is very approachable and can manage any complicated cataract and glaucoma cases with precision using the latest technology and equipment.
               </p>
               <p className="p-large" style={{ marginBottom: '2rem' }}>
-                Dr. Jeyalakshmi also offers her expert opinion in glaucoma at VHS, Taramani, Dhanvantri eye care, Anna nagar & Keshava eye care, Virugambakkam all in Chennai.
+                Dr. Jeyalakshmi also offers her expert opinion in glaucoma at <Link to="/contact#taramani">VHS, Taramani</Link>, <Link to="/contact#annanagar">Dhanvantri Eye Care, Anna Nagar</Link> & <Link to="/contact#virugambakkam">Keshava Eye Care, Virugambakkam</Link>, all in Chennai.
               </p>
 
               <div className="doctor-cards-grid">

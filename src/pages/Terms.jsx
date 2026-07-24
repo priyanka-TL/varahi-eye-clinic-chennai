@@ -1,15 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import '../styles/pages.css';
+import Seo from '../components/Seo';
 
 const Terms = () => {
   return (
     <div className="page-transition-enter page-transition-enter-active">
-      <Helmet>
-        <title>Terms & Conditions | Sree Varahi Eye Clinic</title>
-        <meta name="robots" content="noindex, follow" />
-      </Helmet>
+      <Seo
+        title="Terms & Conditions | Sree Varahi Eye Clinic"
+        description="Terms and Conditions for using the Sree Varahi Eye Clinic website and booking appointments."
+        path="/terms"
+        noindex
+      />
 
       <div className="page-header" style={{padding: '100px 0 40px'}}>
         <div className="container">
