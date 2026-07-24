@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Target, Eye as EyeIcon, Heart } from 'lucide-react';
 import '../styles/pages.css';
-import aboutImg from '../assets/images/Tnagar_branch/drCheckingpatient.jpeg';
+import aboutImg from '../assets/images/doctor_photo/aboutPage.png';
 
 const About = () => {
   return (
@@ -38,7 +38,7 @@ const About = () => {
               <div className="about-features">
                 <div className="feature-item">
                   <CheckCircle2 className="feature-icon" size={24} />
-                  <span>Modern Equipment</span>
+                  <span>Less Waiting Time</span>
                 </div>
                 <div className="feature-item">
                   <CheckCircle2 className="feature-icon" size={24} />

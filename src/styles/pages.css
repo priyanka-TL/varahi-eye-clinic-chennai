@@ -525,64 +525,55 @@
   box-shadow: 0 0 0 2px var(--color-secondary-light);
 }
 
-/* --- Facilities Grid --- */
-.facilities-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-}
 
-@media (min-width: 768px) {
-  .facilities-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-.facility-card {
+/* --- Gallery Masonry ---
+   True masonry: images are pre-distributed round-robin into column arrays
+   in Gallery.jsx and rendered as separate flex columns. Each column just
+   stacks its own photos with no reserved/balanced space, so short columns
+   never leave a dead gap the way CSS `column-count` balancing can.
+   Every image keeps its natural aspect ratio — nothing is stretched or
+   cropped regardless of whether the source photo is portrait, landscape,
+   or square. */
+.gallery-grid {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.5rem;
 }
 
-.facility-icon {
-  background: var(--color-primary);
-  color: white;
-  padding: 1rem;
-  border-radius: var(--radius-sm);
-  flex-shrink: 0;
+.gallery-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  gap: 1rem;
 }
 
-/* --- Gallery Masonry --- */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 1.5rem;
-  grid-auto-flow: dense;
+@media (min-width: 576px) {
+  .gallery-grid,
+  .gallery-column {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .gallery-grid,
+  .gallery-column {
+    gap: 1.5rem;
+  }
 }
 
 .gallery-item {
   border-radius: var(--radius-sm);
   overflow: hidden;
   position: relative;
-  aspect-ratio: 4/3;
   cursor: pointer;
 }
 
-.gallery-item.wide {
-  grid-column: span 2;
-  aspect-ratio: 16/9;
-}
-
-.gallery-item.tall {
-  grid-row: span 2;
-  aspect-ratio: 3/4;
-}
-
 .gallery-img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   transition: transform 0.5s ease;
 }
 
@@ -670,7 +661,113 @@
   border-top: 1px solid var(--color-border);
 }
 
+/* --- Review QR Section --- */
+.review-qr-section {
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(10, 46, 92, 0.04) 0%, rgba(var(--color-secondary-rgb, 26, 115, 232), 0.04) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+}
+
+.review-qr-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.review-qr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .review-qr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.review-qr-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.review-qr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-qr-branch-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.85rem;
+  border-radius: 50px;
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.review-qr-branch-badge.secondary {
+  background: var(--color-secondary);
+}
+
+.review-qr-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.review-qr-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.review-qr-code-wrapper {
+  padding: 0.75rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  background: #f8faff;
+  display: inline-flex;
+  box-shadow: inset 0 2px 6px rgba(10, 46, 92, 0.06);
+}
+
+.review-qr-img {
+  width: 160px;
+  height: 160px;
+  display: block;
+  border-radius: 6px;
+}
+
+.review-qr-instruction {
+  font-size: 0.825rem;
+  color: var(--color-text-lighter);
+  margin: 0;
+}
+
+.review-qr-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
 /* --- Testimonials --- */
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -936,6 +1033,151 @@
   font-size: 0.85rem;
   color: var(--color-text-light);
   margin-top: 0.25rem;
+}
+
+/* Location Cards & Timing Badges */
+.location-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.location-card.featured-card {
+  border: 2px solid var(--color-secondary);
+  background: linear-gradient(135deg, rgba(0, 128, 128, 0.04) 0%, rgba(255, 255, 255, 1) 100%);
+  box-shadow: 0 4px 14px rgba(0, 128, 128, 0.08);
+}
+
+.locations-full-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .locations-full-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.booking-section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .booking-section-grid {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+  }
+}
+
+.location-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-secondary-light);
+}
+
+.location-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.location-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.location-role {
+  font-size: 0.825rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+.location-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  background: rgba(0, 128, 128, 0.1);
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.location-badge.primary {
+  background: rgba(10, 46, 92, 0.1);
+  color: var(--color-primary);
+}
+
+.location-detail {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.location-detail .icon {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.location-timing-box {
+  background: rgba(0, 128, 128, 0.05);
+  border-left: 3px solid var(--color-secondary);
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.location-timing-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.location-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+  margin-top: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.location-map-btn:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.sunday-notice-card {
+  background: #fff8e6;
+  border: 1px solid #ffe0b2;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #b78103;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 /* Premium Form */

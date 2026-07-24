@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity } from 'lucide-react';
 import '../styles/pages.css';
-import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.png';
+import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
 
 const Doctor = () => {
   return (
@@ -59,11 +59,11 @@ const Doctor = () => {
                 <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                     <Stethoscope size={18} className="text-secondary" />
-                    <span className="p-small">Reg No: 54321</span>
+                    <span className="p-small">Reg No: 67048</span>
                   </div>
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                     <BookOpen size={18} className="text-secondary" />
-                    <span className="p-small">Languages: English, Tamil</span>
+                    <span className="p-small">Languages: Tamil, English, Hindi, Telugu</span>
                   </div>
                 </div>
 
@@ -134,6 +134,7 @@ const Doctor = () => {
                   <li>• Tamil Nadu Ophthalmic Association (TNOA)</li>
                   <li>• Medical Council of India (MCI)</li>
                   <li>• Indian Medical Association (IMA)</li>
+                  <li>• Glaucoma Society of India (GSI)</li>
                 </ul>
               </div>
 

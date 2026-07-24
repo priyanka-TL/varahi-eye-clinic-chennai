@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Activity, Eye, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
 import '../styles/pages.css';
-import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.png';
+import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
 
 const Home = () => {
   return (
@@ -25,7 +25,7 @@ const Home = () => {
             </h1>
             <p className="hero-desc">
               Experience world-class ophthalmic care at Sree Varahi Eye Clinic.
-              Our advanced technology and experienced specialists ensure the best
+              Our advanced technology and experienced specialist ensure the best
               vision outcomes for you and your family.
             </p>
             <div className="hero-actions">
@@ -87,7 +87,7 @@ const Home = () => {
             <div className="feature-item slide-up delay-100">
               <Activity className="feature-icon" size={32} />
               <div>
-                <h4 className="h4">Modern Equipment</h4>
+                <h4 className="h4">Less Waiting Time</h4>
                 <p className="p-small">Latest diagnostic technology</p>
               </div>
             </div>

@@ -1,32 +1,95 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { X, ZoomIn } from 'lucide-react';
 import '../styles/pages.css';
 
+// ── Categorized image imports ──────────────────────────────────────────────
+const tnagarClinicModules = import.meta.glob('../assets/images/clinic/tnagar-*.{jpeg,jpg,png,webp}', { eager: true });
+const kilpaukClinicModules = import.meta.glob('../assets/images/clinic/kilpauk-*.{jpeg,jpg,png,webp}', { eager: true });
+const patientModules = import.meta.glob('../assets/images/patients/*.{jpeg,jpg,png,webp}', { eager: true });
+const spectaclesModules = import.meta.glob('../assets/images/spectacles/*.{jpeg,jpg,png,webp}', { eager: true });
+const equipmentModules = import.meta.glob('../assets/images/equipment/*.{jpeg,jpg,png,webp}', { eager: true });
+const eventModules = import.meta.glob('../assets/images/events/*.{jpeg,jpg,png,webp}', { eager: true });
+const awardsModules = import.meta.glob('../assets/images/awards/*.{jpeg,jpg,png,webp}', { eager: true });
+
+// Helper: derive a readable subtitle from filename
+const titleFromFile = (path) => {
+  const name = path.split('/').pop().replace(/\.\w+$/, '');
+  return name
+    .replace(/^(tnagar|kilpauk)-/, '')
+    .replace(/-\d+$/, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
+};
+
+const buildImages = (modules, category, label) =>
+  Object.entries(modules).map(([path, mod], index) => ({
+    id: `${category}-${index}`,
+    src: mod.default,
+    category,
+    title: label,
+    subtitle: titleFromFile(path),
+  }));
+
+const images = [
+  ...buildImages(tnagarClinicModules, 't-nagar', 'T. Nagar Branch'),
+  ...buildImages(kilpaukClinicModules, 'kilpauk', 'Kilpauk Branch'),
+  ...buildImages(patientModules, 'patients', 'Patients & Consultations'),
+  ...buildImages(spectaclesModules, 'spectacles', 'Spectacles & Eyewear'),
+  ...buildImages(equipmentModules, 'equipment', 'Equipment & Technology'),
+  ...buildImages(eventModules, 'events', 'Events & Inauguration'),
+  ...buildImages(awardsModules, 'awards', 'Awards & Recognition'),
+];
+
+const CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 't-nagar', label: 'T. Nagar' },
+  { key: 'kilpauk', label: 'Kilpauk' },
+  { key: 'patients', label: 'Patients' },
+  { key: 'spectacles', label: 'Spectacles' },
+  { key: 'equipment', label: 'Equipment' },
+  { key: 'events', label: 'Events' },
+  { key: 'awards', label: 'Awards' },
+];
+
+// Matches the breakpoints in pages.css (.gallery-grid)
+const getColumnCount = (width) => {
+  if (width >= 1200) return 4;
+  if (width >= 992) return 3;
+  if (width >= 576) return 2;
+  return 1;
+};
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [columnCount, setColumnCount] = useState(() =>
+    typeof window === 'undefined' ? 4 : getColumnCount(window.innerWidth)
+  );
 
-  const categories = ['all', 'clinic', 'equipment', 'reception', 'ot'];
+  useEffect(() => {
+    const handleResize = () => setColumnCount(getColumnCount(window.innerWidth));
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  // TODO: Replace with real clinic images
-  const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80', category: 'clinic', title: 'Clinic Exterior', className: 'wide' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80', category: 'equipment', title: 'Diagnostic Room', className: '' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80', category: 'reception', title: 'Waiting Lounge', className: 'tall' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80', category: 'ot', title: 'Operation Theatre', className: '' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&w=800&q=80', category: 'clinic', title: 'Optical Store', className: 'wide' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80', category: 'equipment', title: 'Advanced Microscope', className: '' },
-  ];
+  const filteredImages = filter === 'all'
+    ? images
+    : images.filter(img => img.category === filter);
 
-  const filteredImages = filter === 'all' ? images : images.filter(img => img.category === filter);
+  // True masonry: distribute images round-robin across columns so each
+  // column simply stacks its own photos with no reserved dead space.
+  const columns = Array.from({ length: columnCount }, () => []);
+  filteredImages.forEach((img, index) => {
+    columns[index % columnCount].push({ img, index });
+  });
 
   return (
     <div className="page-transition-enter page-transition-enter-active">
       <Helmet>
         <title>Gallery | Sree Varahi Eye Clinic</title>
-        <meta name="description" content="Take a virtual tour of Sree Varahi Eye Clinic. View our state-of-the-art facilities, operation theatres, and advanced equipment." />
+        <meta name="description" content="Take a virtual tour of Sree Varahi Eye Clinic. View our T. Nagar and Kilpauk branches, state-of-the-art equipment, spectacle collections, patient consultations, events, and awards." />
       </Helmet>
 
       {/* Page Header */}
@@ -43,67 +106,85 @@ const Gallery = () => {
 
       <section className="section">
         <div className="container">
-          
-          {/* Filters */}
-          <div className="text-center slide-up" style={{marginBottom: '3rem'}}>
-            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem'}}>
-              {categories.map((cat) => (
-                <button 
-                  key={cat}
-                  className={`btn ${filter === cat ? 'btn-primary' : 'btn-outline'} btn-sm`}
-                  onClick={() => setFilter(cat)}
-                  style={{textTransform: 'capitalize'}}
+
+          {/* Filter Buttons */}
+          <div className="text-center slide-up" style={{ marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+              {CATEGORIES.map(({ key, label }) => (
+                <button
+                  key={key}
+                  className={`btn ${filter === key ? 'btn-primary' : 'btn-outline'} btn-sm`}
+                  onClick={() => setFilter(key)}
                 >
-                  {cat}
+                  {label}
                 </button>
               ))}
             </div>
           </div>
 
+          {/* Image Count */}
+          <p className="slide-up" style={{ textAlign: 'center', color: 'var(--color-text-light)', marginBottom: '2rem', fontSize: '0.9rem' }}>
+            Showing {filteredImages.length} {filteredImages.length === 1 ? 'photo' : 'photos'}
+            {filter !== 'all' && ` · ${CATEGORIES.find(c => c.key === filter)?.label}`}
+          </p>
+
           {/* Masonry Grid */}
           <div className="gallery-grid">
-            {filteredImages.map((img, index) => (
-              <div 
-                key={img.id} 
-                className={`gallery-item ${img.className} slide-up delay-${(index % 4) * 100}`}
-                onClick={() => setSelectedImage(img)}
-              >
-                <img src={img.src} alt={img.title} className="gallery-img" loading="lazy" />
-                <div className="gallery-overlay">
-                  <ZoomIn size={48} color="white" style={{position: 'absolute'}} opacity={0.5} />
-                  <span>{img.title}</span>
-                </div>
+            {columns.map((column, colIndex) => (
+              <div className="gallery-column" key={colIndex}>
+                {column.map(({ img, index }) => (
+                  <div
+                    key={img.id}
+                    className={`gallery-item slide-up delay-${(index % 4) * 100}`}
+                    onClick={() => setSelectedImage(img)}
+                  >
+                    <img src={img.src} alt={img.subtitle || img.title} className="gallery-img" loading="lazy" />
+                    <div className="gallery-overlay">
+                      <ZoomIn size={48} color="white" style={{ position: 'absolute' }} opacity={0.5} />
+                      <span>{img.title}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
+
+          {filteredImages.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '4rem 0', color: 'var(--color-text-light)' }}>
+              No photos in this category yet.
+            </div>
+          )}
 
         </div>
       </section>
 
       {/* Lightbox Modal */}
       {selectedImage && (
-        <div 
+        <div
           style={{
             position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999, display: 'flex',
+            backgroundColor: 'rgba(0,0,0,0.92)', zIndex: 9999, display: 'flex',
             alignItems: 'center', justifyContent: 'center', padding: '2rem'
           }}
           onClick={() => setSelectedImage(null)}
         >
-          <button 
-            style={{position: 'absolute', top: '20px', right: '20px', color: 'white', background: 'none', border: 'none', cursor: 'pointer'}}
+          <button
+            style={{ position: 'absolute', top: '20px', right: '20px', color: 'white', background: 'none', border: 'none', cursor: 'pointer' }}
             onClick={() => setSelectedImage(null)}
           >
             <X size={36} />
           </button>
-          <img 
-            src={selectedImage.src} 
-            alt={selectedImage.title} 
-            style={{maxHeight: '90vh', maxWidth: '100%', objectFit: 'contain', borderRadius: '8px'}} 
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.subtitle || selectedImage.title}
+            style={{ maxHeight: '90vh', maxWidth: '100%', objectFit: 'contain', borderRadius: '8px' }}
             onClick={(e) => e.stopPropagation()}
           />
-          <div style={{position: 'absolute', bottom: '20px', color: 'white', textAlign: 'center'}}>
-            <h3 className="h3">{selectedImage.title}</h3>
+          <div style={{ position: 'absolute', bottom: '20px', color: 'white', textAlign: 'center' }}>
+            <h3 className="h3" style={{ marginBottom: '0.25rem' }}>{selectedImage.title}</h3>
+            {selectedImage.subtitle && (
+              <p style={{ fontSize: '0.9rem', opacity: 0.75 }}>{selectedImage.subtitle}</p>
+            )}
           </div>
         </div>
       )}
