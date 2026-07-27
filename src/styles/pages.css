@@ -716,11 +716,18 @@
 
 /* --- Review QR Section --- */
 .review-qr-section {
-  margin-top: 4rem;
-  padding: 3rem 2rem;
+  margin-top: 3rem;
+  padding: 2rem 1rem;
   background: linear-gradient(135deg, rgba(10, 46, 92, 0.04) 0%, rgba(var(--color-secondary-rgb, 26, 115, 232), 0.04) 100%);
   border: 1px solid var(--color-border);
   border-radius: 20px;
+}
+
+@media (min-width: 768px) {
+  .review-qr-section {
+    margin-top: 4rem;
+    padding: 3rem 2rem;
+  }
 }
 
 .review-qr-header {
@@ -746,7 +753,7 @@
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  padding: 2rem 1.5rem;
+  padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -759,6 +766,12 @@
 .review-qr-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 600px) {
+  .review-qr-card {
+    padding: 2rem 1.5rem;
+  }
 }
 
 .review-qr-branch-badge {
@@ -791,7 +804,7 @@
 }
 
 .review-qr-code-wrapper {
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 2px solid var(--color-border);
   border-radius: 12px;
   background: #f8faff;

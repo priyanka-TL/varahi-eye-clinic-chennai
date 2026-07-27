@@ -153,7 +153,7 @@ const Testimonials = () => {
           <div className="review-qr-section slide-up">
             <div className="review-qr-header">
               <span className="section-subtitle">Share Your Experience</span>
-              <h3 className="h3">Leave Us a Google Review</h3>
+              <h3 className="h3" style={{ color: '#F86939' }}>Leave Us a Google Review</h3>
               <p className="p-large" style={{ marginTop: '0.5rem' }}>
                 Scan the QR code for your branch to leave a review instantly — it takes less than a minute!
               </p>
