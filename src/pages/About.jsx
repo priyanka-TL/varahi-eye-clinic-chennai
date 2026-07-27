@@ -86,7 +86,7 @@ const About = () => {
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />
-                <Link to="/services#cataract-surgery">Cataract surgery</Link>
+                <Link to="/services#cataract-surgery">Cataract & Glaucoma surgery</Link>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <CheckCircle2 className="text-primary" size={24} />

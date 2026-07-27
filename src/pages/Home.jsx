@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Activity, Eye, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
+import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
+import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
+import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
+import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
+import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
 import Seo from '../components/Seo';
 import { buildOrganizationSchema } from '../config/seoHelpers';
 
@@ -21,7 +26,7 @@ const Home = () => {
         <div className="hero-bg-shape"></div>
         <div className="container hero-container">
           <div className="hero-content fade-in">
-            <span className="hero-subtitle">Premium Eye Care Center</span>
+            <span className="hero-subtitle">Sree Varahi Eye Clinic</span>
             <h1 className="hero-title h1">
               Trusted Eye Care <br />
               <span className="gradient-text">for You & Your Family</span>
@@ -111,6 +116,13 @@ const Home = () => {
                 <p className="p-small">Ethical and economical treatment</p>
               </div>
             </div>
+            <div className="feature-item slide-up">
+              <ShieldCheck className="feature-icon" size={32} />
+              <div>
+                <h4 className="h4">Pediatric Eye care</h4>
+                <p className="p-small">Dedicated to personalized care</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -126,19 +138,25 @@ const Home = () => {
 
           <div className="services-grid">
             {[
-              { title: 'Glasses Checkup & Dispensing', slug: 'glasses-checkup', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} /> },
-              { title: 'Cataract Surgery', slug: 'cataract-surgery', desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.', icon: <Eye size={32} /> },
-              { title: 'Glaucoma Screening & Management', slug: 'glaucoma-screening', desc: 'Early diagnosis and advanced management to prevent optic nerve damage.', icon: <ShieldCheck size={32} /> },
-              { title: 'Computer Vision Syndrome', slug: 'computer-vision-syndrome', desc: 'Expert care and counseling for digital eye strain and related symptoms.', icon: <Activity size={32} /> },
-              { title: 'Diabetic Eye Screening', slug: 'diabetic-eye-screening', desc: 'Specialized screening to detect and manage diabetic retinopathy early.', icon: <Stethoscope size={32} /> }
+
+              { title: 'Cataract Surgery', slug: 'cataract-surgery', desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.', icon: <Eye size={32} />, img: imgCataract },
+              { title: 'Glaucoma Screening & Surgery', slug: 'glaucoma-screening', desc: 'Early diagnosis and advanced management to prevent optic nerve damage.', icon: <ShieldCheck size={32} />, img: imgGlaucoma },
+              { title: 'Computer Vision Syndrome', slug: 'computer-vision-syndrome', desc: 'Expert care and counseling for digital eye strain and related symptoms.', icon: <Activity size={32} />, img: imgComputerVision },
+              { title: 'Diabetic Eye Screening', slug: 'diabetic-eye-screening', desc: 'Specialized screening to detect and manage diabetic retinopathy early.', icon: <Stethoscope size={32} />, img: imgDiabetic },
+              { title: 'Glasses Checkup & Dispensing', slug: 'glasses-checkup', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} />, img: imgGlasses }
             ].map((service, index) => (
               <div key={index} className={`card service-card slide-up delay-${(index % 3 + 1) * 100}`}>
-                <div className="service-icon">{service.icon}</div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="p-small">{service.desc}</p>
-                <Link to={`/services#${service.slug}`} className="service-link">
-                  Learn more <ArrowRight size={16} />
-                </Link>
+                <div className="service-card-image-wrapper">
+                  <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  <div className="service-icon">{service.icon}</div>
+                </div>
+                <div className="service-card-content">
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="p-small">{service.desc}</p>
+                  <Link to={`/services#${service.slug}`} className="service-link">
+                    Learn more <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

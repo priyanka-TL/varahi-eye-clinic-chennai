@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { Eye, Activity, ShieldCheck, Stethoscope, Users, PlusCircle, Search, Sparkles, AlertCircle, CheckCircle2 } from 'lucide-react';
 import '../styles/pages.css';
 import spectaclesImg from '../assets/images/spectacles/tnagar-spectacles-display-01.jpeg';
+import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
+import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
+import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
+import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
+import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
 import Seo from '../components/Seo';
 import { buildBreadcrumbSchema } from '../config/seoHelpers';
 import { SITE_URL } from '../config/site';
@@ -13,6 +18,7 @@ const Services = () => {
       slug: 'glasses-checkup',
       title: 'Glasses checkup and dispensing of glasses',
       icon: <Search size={40} />,
+      img: imgGlasses,
       desc: 'Complete eye health check-up to ensure accurate prescription and best fit for glasses.',
       benefits: ['Accurate prescription', 'Wide selection of frames', 'Comfortable vision'],
       process: 'Visual acuity test, refraction, frame selection, and precise lens fitting.'
@@ -21,6 +27,7 @@ const Services = () => {
       slug: 'cataract-surgery',
       title: 'Cataract Surgery',
       icon: <Eye size={40} />,
+      img: imgCataract,
       desc: 'Advanced Micro-Incision Cataract Surgery (MICS) with the latest phacoemulsification technology.',
       benefits: ['Painless procedure', 'Quick recovery', 'Premium IOL options'],
       process: 'Detailed evaluation, precise mapping, safe removal of clouded lens, and IOL implantation.'
@@ -29,6 +36,7 @@ const Services = () => {
       slug: 'glaucoma-screening',
       title: 'Glaucoma screening and management',
       icon: <ShieldCheck size={40} />,
+      img: imgGlaucoma,
       desc: 'Early diagnosis and advanced management to prevent optic nerve damage.',
       benefits: ['Preserves side vision', 'Prevents blindness', 'Tailored treatment plans'],
       process: 'Intraocular pressure check, visual field testing, followed by medical or surgical management.'
@@ -37,6 +45,7 @@ const Services = () => {
       slug: 'computer-vision-syndrome',
       title: 'Computer vision syndrome management and counseling',
       icon: <Activity size={40} />,
+      img: imgComputerVision,
       desc: 'Expert care for digital eye strain and related symptoms.',
       benefits: ['Relieves eye fatigue', 'Improves focus', 'Ergonomic advice'],
       process: 'Symptom evaluation, dry eye assessment, customized glasses, and counseling on digital habits.'
@@ -45,6 +54,7 @@ const Services = () => {
       slug: 'diabetic-eye-screening',
       title: 'Diabetic eye screening',
       icon: <Stethoscope size={40} />,
+      img: imgDiabetic,
       desc: 'Specialized screening to detect and manage diabetic retinopathy early.',
       benefits: ['Prevents severe vision loss', 'Early detection', 'Timely treatment'],
       process: 'Dilated fundus exam, detailed retinal evaluation, and targeted therapy if needed.'
@@ -97,23 +107,28 @@ const Services = () => {
 
           <div className="services-grid">
             {servicesList.map((service, index) => (
-              <div key={index} id={service.slug} className={`card slide-up delay-${(index % 4) * 100}`} style={{ display: 'flex', flexDirection: 'column' }}>
-                <div className="service-icon" style={{ background: 'var(--color-primary)', color: 'white' }}>{service.icon}</div>
-                <h3 className="h3 text-primary" style={{ marginBottom: '1rem' }}>{service.title}</h3>
-                <p className="p-small" style={{ marginBottom: '1.5rem' }}>{service.desc}</p>
+              <div key={index} id={service.slug} className={`card service-card slide-up delay-${(index % 4) * 100}`} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="service-card-image-wrapper">
+                  <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  <div className="service-icon" style={{ background: 'var(--color-primary)', color: 'white' }}>{service.icon}</div>
+                </div>
+                <div className="service-card-content">
+                  <h3 className="h3 text-primary" style={{ marginBottom: '1rem' }}>{service.title}</h3>
+                  <p className="p-small" style={{ marginBottom: '1.5rem' }}>{service.desc}</p>
 
-                <div>
-                  <h5 className="h4" style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--color-secondary)' }}>Key Benefits</h5>
-                  <ul className="p-small" style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    {service.benefits.map((benefit, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <PlusCircle size={14} className="text-secondary" /> {benefit}
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h5 className="h4" style={{ fontSize: '1rem', marginBottom: '0.5rem', color: 'var(--color-secondary)' }}>Key Benefits</h5>
+                    <ul className="p-small" style={{ marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                      {service.benefits.map((benefit, i) => (
+                        <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <PlusCircle size={14} className="text-secondary" /> {benefit}
+                        </li>
+                      ))}
+                    </ul>
 
-                  <h5 className="h4" style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Process</h5>
-                  <p className="p-small" style={{ fontStyle: 'italic' }}>{service.process}</p>
+                    <h5 className="h4" style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>Process</h5>
+                    <p className="p-small" style={{ fontStyle: 'italic' }}>{service.process}</p>
+                  </div>
                 </div>
               </div>
             ))}
