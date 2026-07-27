@@ -181,14 +181,21 @@ Reason: ${formData.message}`;
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <div className="feature-icon-wrapper bg-accent" style={{ width: '44px', height: '44px', borderRadius: '50%' }}>
-                    <ShieldCheck className="text-primary" size={20} />
+                  <div className="feature-icon-wrapper" style={{ width: '44px', height: '44px', borderRadius: '50%', background: '#fff0eb' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F86939" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="h4" style={{ fontSize: '1.05rem', marginBottom: '0.2rem' }}>Quality Assurance</h4>
-                    <p className="p-small">Comprehensive eye examination & patient-first care by Glaucoma specialist Dr. Jeyalakshmi Govindan.</p>
+                    <h4 className="h4" style={{ fontSize: '1.05rem', marginBottom: '0.2rem' }}>Social Media & Updates</h4>
+                    <a href="https://www.instagram.com/drjairajesh?igsh=bXExamg4emY2emM5" target="_blank" rel="noopener noreferrer" className="feature-link" style={{ fontSize: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>@drjairajesh <ExternalLink size={14} /></a>
+                    <p className="p-small" style={{ marginTop: '0.3rem' }}>Watch our eye health awareness videos & stay connected.</p>
                   </div>
                 </div>
+
+
               </div>
 
               <div>
@@ -212,9 +219,15 @@ Reason: ${formData.message}`;
                 )}
 
                 <form onSubmit={handleSubmit} className="premium-form">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="name">Full Name</label>
-                    <input type="text" id="name" name="name" className="form-input-premium" placeholder="John Doe" required value={formData.name} onChange={handleChange} />
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="name">Full Name</label>
+                      <input type="text" id="name" name="name" className="form-input-premium" placeholder="John Doe" required value={formData.name} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label className="form-label" htmlFor="email">Email Address (Optional)</label>
+                      <input type="email" id="email" name="email" className="form-input-premium" placeholder="john@example.com" value={formData.email} onChange={handleChange} />
+                    </div>
                   </div>
 
                   <div className="form-row">
@@ -237,11 +250,6 @@ Reason: ${formData.message}`;
                       <option value="Keshava Eye Care (Virugambakkam)">4. Keshava Eye Care, Virugambakkam (Tue/Fri 2:30 PM)</option>
                       <option value="Dhanvantri Eye Care (Anna Nagar)">5. Dhanvantri Eye Care, Anna Nagar West (Mon 2:30 PM)</option>
                     </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="email">Email Address (Optional)</label>
-                    <input type="email" id="email" name="email" className="form-input-premium" placeholder="john@example.com" value={formData.email} onChange={handleChange} />
                   </div>
 
                   <div className="form-group">

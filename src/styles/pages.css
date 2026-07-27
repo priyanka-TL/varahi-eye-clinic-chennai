@@ -1236,10 +1236,17 @@
 /* Premium Form */
 .contact-form-premium {
   background: var(--color-bg);
-  padding: 2.5rem;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 16px;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 768px) {
+  .contact-form-premium {
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
 }
 
 .form-alert {

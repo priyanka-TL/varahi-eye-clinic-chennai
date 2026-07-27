@@ -162,7 +162,7 @@ const Testimonials = () => {
             <div className="review-qr-grid">
               {/* T. Nagar Branch */}
               <div className="review-qr-card">
-                <div className="review-qr-branch-badge">Branch 1</div>
+
                 <h4 className="review-qr-title">Sree Varahi Eye Clinic</h4>
                 <p className="review-qr-subtitle">T. Nagar, Chennai</p>
                 <div className="review-qr-code-wrapper">
@@ -185,7 +185,6 @@ const Testimonials = () => {
 
               {/* Kilpauk Branch */}
               <div className="review-qr-card">
-                <div className="review-qr-branch-badge secondary">Branch 2</div>
                 <h4 className="review-qr-title">Kumaran Hospitals (P) Ltd</h4>
                 <p className="review-qr-subtitle">Kilpauk, Chennai</p>
                 <div className="review-qr-code-wrapper">
