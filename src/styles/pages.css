@@ -42,8 +42,8 @@
 }
 
 .hero-subtitle {
-  color: var(--color-secondary);
-  font-weight: 600;
+  color: #F86939;
+  font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -67,6 +67,13 @@
 
 .hero-image-wrapper {
   position: relative;
+  order: -1;
+}
+
+@media (min-width: 992px) {
+  .hero-image-wrapper {
+    order: 0;
+  }
 }
 
 .hero-image {
@@ -164,27 +171,71 @@
 }
 
 .service-card {
-  padding: var(--space-3);
+  padding: 0 !important;
   text-align: left;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-content {
+  padding: var(--space-2);
+  padding-top: 2.5rem;
+  /* Space for the overlapping icon */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+  .service-card-content {
+    padding: var(--space-4);
+    padding-top: 2.5rem;
+  }
+}
+
+.service-card-image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.service-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.service-card:hover .service-card-image {
+  transform: scale(1.08);
 }
 
 .service-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--color-accent);
-  color: var(--color-primary);
-  border-radius: var(--radius-sm);
+  width: 72px;
+  height: 72px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
   transition: all var(--transition-normal);
+
+  /* Positioning over the image boundary */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  border: 4px solid var(--color-bg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .service-card:hover .service-icon {
-  background: var(--color-primary);
+  background: var(--color-secondary);
   color: white;
-  transform: scale(1.1);
+  transform: translate(-50%, 50%) scale(1.1);
 }
 
 .service-title {
@@ -248,6 +299,11 @@
 .feature-icon {
   color: var(--color-secondary);
   flex-shrink: 0;
+}
+
+.feature-item span {
+  color: #F86939;
+  font-weight: bold;
 }
 
 /* --- Doctor Section --- */
@@ -550,6 +606,7 @@
 }
 
 @media (min-width: 576px) {
+
   .gallery-grid,
   .gallery-column {
     gap: 1.25rem;
@@ -557,6 +614,7 @@
 }
 
 @media (min-width: 992px) {
+
   .gallery-grid,
   .gallery-column {
     gap: 1.5rem;
@@ -663,11 +721,18 @@
 
 /* --- Review QR Section --- */
 .review-qr-section {
-  margin-top: 4rem;
-  padding: 3rem 2rem;
+  margin-top: 3rem;
+  padding: 2rem 1rem;
   background: linear-gradient(135deg, rgba(10, 46, 92, 0.04) 0%, rgba(var(--color-secondary-rgb, 26, 115, 232), 0.04) 100%);
   border: 1px solid var(--color-border);
   border-radius: 20px;
+}
+
+@media (min-width: 768px) {
+  .review-qr-section {
+    margin-top: 4rem;
+    padding: 3rem 2rem;
+  }
 }
 
 .review-qr-header {
@@ -693,7 +758,7 @@
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  padding: 2rem 1.5rem;
+  padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -706,6 +771,12 @@
 .review-qr-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 600px) {
+  .review-qr-card {
+    padding: 2rem 1.5rem;
+  }
 }
 
 .review-qr-branch-badge {
@@ -738,7 +809,7 @@
 }
 
 .review-qr-code-wrapper {
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 2px solid var(--color-border);
   border-radius: 12px;
   background: #f8faff;
@@ -1183,10 +1254,17 @@
 /* Premium Form */
 .contact-form-premium {
   background: var(--color-bg);
-  padding: 2.5rem;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 16px;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 768px) {
+  .contact-form-premium {
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
 }
 
 .form-alert {

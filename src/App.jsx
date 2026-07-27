@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ScrollToTop from './components/ScrollToTop';
+import useScrollReveal from './hooks/useScrollReveal';
 
 // Pages — Home loads eagerly (it's the most common landing page and
 // contains the LCP image); the rest are route-split so a visitor only
@@ -43,10 +44,23 @@ const ScrollToTopOnMount = () => {
   return null;
 };
 
+// Re-initialize scroll reveal animations on every page navigation
+const GlobalScrollReveal = () => {
+  const { pathname } = useLocation();
+  // Using setTimeout ensures the DOM has updated before observing
+  useEffect(() => {
+    // The hook handles the observation, but we pass pathname as the trigger dependency
+  }, [pathname]);
+
+  useScrollReveal('.slide-up, .fade-in, .fly-in', 'revealed', 0.15, pathname);
+  return null;
+};
+
 function App() {
   return (
     <Router basename={BASENAME}>
       <ScrollToTopOnMount />
+      <GlobalScrollReveal />
       <Header />
 
       <main className="main-content">
