@@ -15,14 +15,33 @@ const useScrollReveal = (selector = '.slide-up, .fade-in, .fly-in', revealClass 
           }
         });
       },
-      { threshold }
+      { threshold, rootMargin: '0px 0px -50px 0px' }
     );
 
-    const elements = document.querySelectorAll(selector);
-    elements.forEach((el) => observer.observe(el));
+    // 1. Initial observation
+    document.querySelectorAll(selector).forEach((el) => observer.observe(el));
+
+    // 2. Watch for dynamically added elements (lazy loading, routing)
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) { // ELEMENT_NODE
+            if (node.matches && node.matches(selector)) {
+              observer.observe(node);
+            }
+            if (node.querySelectorAll) {
+              node.querySelectorAll(selector).forEach((el) => observer.observe(el));
+            }
+          }
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      elements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, [selector, revealClass, threshold]);
 };

@@ -181,7 +181,13 @@
 }
 
 .animate-marquee {
-  animation: scrollLeft 30s linear infinite;
+  animation: scrollLeft 80s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation: scrollLeft 120s linear infinite;
+  }
 }
 
 /* Page Transition Wrapper */
