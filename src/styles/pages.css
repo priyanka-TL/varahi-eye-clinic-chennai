@@ -201,9 +201,14 @@
 
 .service-card-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
   display: block;
+}
+
+.service-card:hover .service-card-image {
+  transform: scale(1.08);
 }
 
 .service-icon {

@@ -30,7 +30,7 @@ const injectBaseMeta = () => ({
 });
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/varahi-eye-clinic-chennai/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/varahi-eye-clinic-chennai/' : '/',
   plugins: [react(), injectBaseMeta()],
-})
+}))

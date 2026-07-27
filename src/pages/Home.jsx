@@ -10,8 +10,13 @@ import imgComputerVision from '../assets/images/services_nethra/cornea-refractiv
 import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
 import Seo from '../components/Seo';
 import { buildOrganizationSchema } from '../config/seoHelpers';
+import AnimatedCounter from '../components/AnimatedCounter';
+import ServicesMarquee from '../components/ServicesMarquee';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const Home = () => {
+  useScrollReveal();
+
   return (
     <div className="page-transition-enter page-transition-enter-active">
       <Seo
@@ -22,8 +27,8 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-bg-shape"></div>
+      <section className="hero" style={{ overflow: 'hidden' }}>
+        <div className="hero-bg-shape ken-burns"></div>
         <div className="container hero-container">
           <div className="hero-content fade-in">
             <span className="hero-subtitle">Sree Varahi Eye Clinic</span>
@@ -37,7 +42,7 @@ const Home = () => {
               vision outcomes for you and your family.
             </p>
             <div className="hero-actions">
-              <Link to="/contact" className="btn btn-primary">
+              <Link to="/contact" className="btn btn-primary pulse-primary btn-shimmer">
                 Book Appointment
               </Link>
               <a href="tel:+919360041641" className="btn btn-outline">
@@ -48,7 +53,9 @@ const Home = () => {
             <div className="hero-trust" style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', marginTop: '2.5rem', alignItems: 'center', fontSize: '0.95rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Users size={18} className="text-secondary" />
-                <span style={{ fontWeight: '600', color: 'var(--color-text)' }}>10,000+ Happy Patients</span>
+                <span style={{ fontWeight: '600', color: 'var(--color-text)' }}>
+                  <AnimatedCounter end={10000} suffix="+" /> Happy Patients
+                </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>⭐</span>
@@ -71,7 +78,7 @@ const Home = () => {
               height="1402"
               fetchPriority="high"
             />
-            <div className="hero-badge">
+            <div className="hero-badge float">
               <div className="hero-badge-icon">
                 <Award size={24} />
               </div>
@@ -88,35 +95,35 @@ const Home = () => {
       <section className="section-alt padding-y-small">
         <div className="container">
           <div className="about-features" style={{ marginTop: 0, padding: '2rem 0' }}>
-            <div className="feature-item slide-up">
+            <div className="feature-item fly-in">
               <ShieldCheck className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Patient First</h4>
                 <p className="p-small">Dedicated to personalized care</p>
               </div>
             </div>
-            <div className="feature-item slide-up delay-100">
+            <div className="feature-item fly-in delay-100">
               <Activity className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Less Waiting Time</h4>
                 <p className="p-small">Latest diagnostic technology</p>
               </div>
             </div>
-            <div className="feature-item slide-up delay-200">
+            <div className="feature-item fly-in delay-200">
               <Users className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Expert Doctor</h4>
                 <p className="p-small">Highly qualified specialist</p>
               </div>
             </div>
-            <div className="feature-item slide-up delay-300">
+            <div className="feature-item fly-in delay-300">
               <Award className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Affordable Care</h4>
                 <p className="p-small">Ethical and economical treatment</p>
               </div>
             </div>
-            <div className="feature-item slide-up">
+            <div className="feature-item fly-in">
               <ShieldCheck className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Pediatric Eye care</h4>
@@ -126,6 +133,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Services Marquee */}
+      <ServicesMarquee />
 
       {/* Services Preview */}
       <section className="section">
@@ -147,7 +157,9 @@ const Home = () => {
             ].map((service, index) => (
               <div key={index} className={`card service-card slide-up delay-${(index % 3 + 1) * 100}`}>
                 <div className="service-card-image-wrapper">
-                  <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  <div style={{ width: '100%', aspectRatio: '16/10', overflow: 'hidden', borderTopLeftRadius: 'var(--radius-lg)', borderTopRightRadius: 'var(--radius-lg)' }}>
+                    <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  </div>
                   <div className="service-icon">{service.icon}</div>
                 </div>
                 <div className="service-card-content">

@@ -109,7 +109,9 @@ const Services = () => {
             {servicesList.map((service, index) => (
               <div key={index} id={service.slug} className={`card service-card slide-up delay-${(index % 4) * 100}`} style={{ display: 'flex', flexDirection: 'column' }}>
                 <div className="service-card-image-wrapper">
-                  <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  <div style={{ width: '100%', aspectRatio: '16/10', overflow: 'hidden', borderTopLeftRadius: 'var(--radius-lg)', borderTopRightRadius: 'var(--radius-lg)' }}>
+                    <img src={service.img} alt={service.title} className="service-card-image" loading="lazy" />
+                  </div>
                   <div className="service-icon" style={{ background: 'var(--color-primary)', color: 'white' }}>{service.icon}</div>
                 </div>
                 <div className="service-card-content">
