@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Users, Activity, Eye, ShieldCheck, Stethoscope, Phone } from 'lucide-react';
+import { ArrowRight, Award, Users, Activity, Eye, ShieldCheck, Stethoscope, Phone, Star, Quote } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
 import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
@@ -8,6 +8,7 @@ import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
 import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
 import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
 import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
+import imgPediatric from '../assets/images/services_nethra/pediatric-ophthalmology.webp';
 import Seo from '../components/Seo';
 import { buildOrganizationSchema } from '../config/seoHelpers';
 import AnimatedCounter from '../components/AnimatedCounter';
@@ -54,7 +55,7 @@ const Home = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Users size={18} className="text-secondary" />
                 <span style={{ fontWeight: '600', color: 'var(--color-text)' }}>
-                  <AnimatedCounter end={10000} suffix="+" /> Happy Patients
+                  <AnimatedCounter end={10000} suffix="+" /> Surgeries
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -123,13 +124,13 @@ const Home = () => {
                 <p className="p-small">Ethical and economical treatment</p>
               </div>
             </div>
-            <div className="feature-item fly-in">
+            {/* <div className="feature-item fly-in">
               <ShieldCheck className="feature-icon" size={32} />
               <div>
                 <h4 className="h4">Pediatric Eye care</h4>
                 <p className="p-small">Dedicated to personalized care</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -153,7 +154,8 @@ const Home = () => {
               { title: 'Glaucoma Screening & Surgery', slug: 'glaucoma-screening', desc: 'Early diagnosis and advanced management to prevent optic nerve damage.', icon: <ShieldCheck size={32} />, img: imgGlaucoma },
               { title: 'Computer Vision Syndrome', slug: 'computer-vision-syndrome', desc: 'Expert care and counseling for digital eye strain and related symptoms.', icon: <Activity size={32} />, img: imgComputerVision },
               { title: 'Diabetic Eye Screening', slug: 'diabetic-eye-screening', desc: 'Specialized screening to detect and manage diabetic retinopathy early.', icon: <Stethoscope size={32} />, img: imgDiabetic },
-              { title: 'Glasses Checkup & Dispensing', slug: 'glasses-checkup', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} />, img: imgGlasses }
+              { title: 'Glasses Checkup & Dispensing', slug: 'glasses-checkup', desc: 'Comprehensive eye health check-up to ensure accurate prescription and best fit for glasses.', icon: <Award size={32} />, img: imgGlasses },
+              { title: 'Pediatric Eye Care', slug: 'pediatric-eye-care', desc: 'Dedicated to personalized care and treatment for children’s vision needs.', icon: <Users size={32} />, img: imgPediatric }
             ].map((service, index) => (
               <div key={index} className={`card service-card slide-up delay-${(index % 3 + 1) * 100}`}>
                 <div className="service-card-image-wrapper">
@@ -175,6 +177,57 @@ const Home = () => {
 
           <div className="text-center" style={{ marginTop: '3rem' }}>
             <Link to="/services" className="btn btn-outline">View All Services</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section testimonials-section">
+        <div className="container">
+          <div className="section-header slide-up">
+            <span className="section-subtitle" style={{ color: 'var(--color-secondary)' }}>Testimonials</span>
+            <h2 className="section-title h2" style={{ marginBottom: '0.5rem' }}>What Our Patients Say</h2>
+            <div className="swipe-indicator">
+              <span>Swipe for more</span>
+              <ArrowRight size={16} />
+            </div>
+          </div>
+          <div className="testimonials-slider slide-up delay-200">
+            {[
+              {
+                text: "Dr. Jayalakshmi at Sree Varahi Eye Clinic is exceptionally professional and caring. The cataract surgery was completely painless, and my vision is better than ever.",
+                author: "Rajesh K.",
+                rating: 5
+              },
+              {
+                text: "I took my daughter here for her first eye checkup. Dr. Jayalakshmi made her feel very comfortable. Highly recommend her pediatric eye care!",
+                author: "Priya S.",
+                rating: 5
+              },
+              {
+                text: "Dr. Jayalakshmi's expertise in managing my glaucoma has been a blessing. She has the latest equipment and provides very thorough explanations.",
+                author: "Venkat R.",
+                rating: 5
+              },
+              {
+                text: "I've been suffering from computer vision syndrome for months. The specialized care and advice I received here made a huge difference.",
+                author: "Ananya M.",
+                rating: 5
+              }
+            ].map((t, idx) => (
+              <div key={idx} className="testimonial-card">
+                <Quote className="testimonial-quote-icon" strokeWidth={1} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div className="testimonial-stars">
+                    {[...Array(t.rating)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
+                  </div>
+                  <p className="testimonial-text">"{t.text}"</p>
+                </div>
+                <div className="testimonial-author" style={{ position: 'relative', zIndex: 1 }}>
+                  <span>- {t.author}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
