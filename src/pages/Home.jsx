@@ -22,7 +22,7 @@ const Home = () => {
     <div className="page-transition-enter page-transition-enter-active">
       <Seo
         title="Sree Varahi Eye Clinic | Best Eye Care Clinic in T. Nagar, Chennai"
-        description="Trusted eye clinic in T. Nagar, Chennai offering cataract surgery, glaucoma management, diabetic eye screening & computer vision care. 20+ years experience, 4.9 Google rating. Book your eye checkup today."
+        description="Trusted eye clinic in T. Nagar, Chennai offering cataract surgery, glaucoma management, diabetic eye screening & computer vision care. 20+ years experience, 5 Google rating. Book your eye checkup today."
         path="/"
         jsonLd={buildOrganizationSchema()}
       />
@@ -60,7 +60,7 @@ const Home = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>⭐</span>
-                <span style={{ fontWeight: '600', color: 'var(--color-text)' }}>4.9 Google Rating</span>
+                <span style={{ fontWeight: '600', color: 'var(--color-text)' }}>5 Google Rating</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <ShieldCheck size={18} className="text-secondary" />
