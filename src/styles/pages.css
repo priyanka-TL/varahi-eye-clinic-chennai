@@ -1503,3 +1503,142 @@
 .breadcrumb a:hover {
   text-decoration: underline;
 }
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+  background: linear-gradient(135deg, #F4F9F9 0%, var(--color-accent) 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 50%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 128, 128, 0.04) 0%, transparent 60%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.testimonials-slider {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: var(--space-4);
+  padding-bottom: var(--space-2);
+  /* Hide scrollbar for a cleaner look */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.testimonials-slider::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.testimonial-card {
+  position: relative;
+  min-width: 300px;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  scroll-snap-align: center;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-quote-icon {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  color: var(--color-secondary-light);
+  opacity: 0.15;
+  width: 120px;
+  height: 120px;
+  z-index: 0;
+  transform: rotate(10deg);
+}
+
+.testimonial-text {
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testimonial-stars {
+  color: #F86939;
+  /* matches hero-subtitle / accent color */
+  display: flex;
+  gap: 2px;
+}
+
+/* Swipe Indicator for Mobile */
+.swipe-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.swipe-indicator svg {
+  animation: swipeArrowAnim 1.5s infinite ease-in-out;
+}
+
+@keyframes swipeArrowAnim {
+  0% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateX(5px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+}
+
+@media (min-width: 768px) {
+  .swipe-indicator {
+    display: none;
+  }
+}

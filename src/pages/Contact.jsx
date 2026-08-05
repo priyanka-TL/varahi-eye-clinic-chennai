@@ -84,12 +84,12 @@ Reason: ${formData.message}`;
       <section className="section" style={{ paddingTop: 'var(--space-6)', paddingBottom: 'var(--space-6)' }}>
         <div className="container">
           {/* Sunday Notice Banner */}
-          <div className="sunday-notice-card slide-up">
+          {/* <div className="sunday-notice-card slide-up">
             <Info size={22} style={{ flexShrink: 0 }} />
             <div>
               <strong>Sunday Schedule:</strong> Closed for regular walk-ins. Prior appointments are available for Sunday upon request.
             </div>
-          </div>
+          </div> */}
 
           <div className="section-header slide-up" style={{ textAlign: 'left', marginBottom: 'var(--space-4)' }}>
             <span className="section-subtitle">Consultation Centers</span>
@@ -244,7 +244,7 @@ Reason: ${formData.message}`;
                   <div className="form-group">
                     <label className="form-label" htmlFor="branch">Consultation Center</label>
                     <select id="branch" name="branch" className="form-input-premium" required value={formData.branch} onChange={handleChange}>
-                      <option value="Sree Varahi Eye Clinic (T. Nagar Branch)">1. Sree Varahi Eye Clinic, T. Nagar (Mon-Sat 4:30 PM - 7 PM)</option>
+                      <option value="Sree Varahi Eye Clinic (T. Nagar Branch)">1. Sree Varahi Eye Clinic, T. Nagar (Mon-Fri 4:30-7 PM | Sat-Sun 10 AM-12 PM)</option>
                       <option value="Kumaran Hospitals (Kilpauk)">2. Kumaran Hospitals, Kilpauk (Mon-Sat 9:30 AM - 2 PM, except Thu)</option>
                       <option value="VHS Hospital (Taramani)">3. VHS Hospital, Taramani (Thu 10 AM - 2 PM)</option>
                       <option value="Keshava Eye Care (Virugambakkam)">4. Keshava Eye Care, Virugambakkam (Tue/Fri 2:30 PM)</option>
