@@ -38,19 +38,45 @@ const Doctor = () => {
 
             {/* Left Sidebar: Photo & Quick Info */}
             <div className="slide-up">
-              <div className="doctor-image-container mb-4" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <img
-                  src={doctorImg}
-                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB, cataract & glaucoma specialist in Chennai"
-                  className="doctor-image"
-                  width="1122"
-                  height="1402"
-                  loading="lazy"
-                />
+              <style>
+                {`
+                  @keyframes crossfade {
+                    0%, 40% { opacity: 1; }
+                    50%, 90% { opacity: 0; }
+                    100% { opacity: 1; }
+                  }
+                  .crossfade-base {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                  }
+                  .crossfade-top {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center top;
+                    animation: crossfade 8s infinite;
+                  }
+                `}
+              </style>
+              <div className="doctor-image-container mb-4" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
+                {/* Background Image */}
                 <img
                   src={doctorImg2}
-                  alt="Dr. Jeyalakshmi Govindan"
-                  className="doctor-image"
+                  alt="Dr. Jeyalakshmi Govindan in clinic"
+                  className="crossfade-base"
+                  style={{ objectPosition: 'bottom right' }}
+                  loading="lazy"
+                />
+                {/* Foreground Image (Fades in and out) */}
+                <img
+                  src={doctorImg}
+                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB"
+                  className="crossfade-top"
                   loading="lazy"
                 />
               </div>
@@ -91,10 +117,11 @@ const Doctor = () => {
             {/* Right Content: Bio, Education, etc. */}
             <div className="doctor-content slide-up delay-200">
               <h3 className="h2 text-primary">Biography</h3>
-              <p className="p-large" style={{ marginBottom: '1rem' }}>
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
                 Dr. Jeyalakshmi Govindan MBBS DO DNB is a senior ophthalmic surgeon with 20 years experience in the field of ophthalmology and specialized in cataract and glaucoma. Well trained from prestigious institutes like RIOGOH, Chennai, ICare Eye hospital & PG research institute, Noida, Aravind eye hospital, Tirunelveli, Eye associates, Sydney and Sankara Nethralaya, Chennai.
               </p>
-              <p className="p-large" style={{ marginBottom: '1rem' }}>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
                 She has served as senior consultant in Sankara Nethralaya for 12 years and has trained many budding ophthalmologists. She is known for handling any kind of patients with smile and patience. She is very approachable and can manage any complicated cataract and glaucoma cases with precision using the latest technology and equipment.
               </p>
               <p className="p-large" style={{ marginBottom: '2rem' }}>
