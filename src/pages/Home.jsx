@@ -7,7 +7,7 @@ import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
 import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
 import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
 import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
-import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
+import imgDiabetic from '../assets/images/ds/dscreening2.png';
 import imgPediatric from '../assets/images/services_nethra/pediatric-ophthalmology.webp';
 import Seo from '../components/Seo';
 import { buildOrganizationSchema } from '../config/seoHelpers';

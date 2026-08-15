@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
+import doctorImg2 from '../assets/images/doctor_photo/doctor1.png';
+import doctorImg3 from '../assets/images/doctor_photo/doctor2.png';
 import Seo from '../components/Seo';
 import { buildPhysicianSchema, buildBreadcrumbSchema } from '../config/seoHelpers';
 
@@ -37,13 +39,62 @@ const Doctor = () => {
 
             {/* Left Sidebar: Photo & Quick Info */}
             <div className="slide-up">
-              <div className="doctor-image-container mb-4">
+              <style>
+                {`
+                  @keyframes fade1 {
+                    0%, 26.6% { opacity: 1; }
+                    33.3%, 93.3% { opacity: 0; }
+                    100% { opacity: 1; }
+                  }
+                  @keyframes fade2 {
+                    0%, 60% { opacity: 1; }
+                    66.6%, 100% { opacity: 0; }
+                  }
+                  .crossfade-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                  }
+                  .img-1 {
+                    z-index: 3;
+                    object-position: center top;
+                    animation: fade1 15s infinite;
+                  }
+                  .img-2 {
+                    z-index: 2;
+                    object-position: bottom right;
+                    animation: fade2 15s infinite;
+                  }
+                  .img-3 {
+                    z-index: 1;
+                    object-position: center;
+                  }
+                `}
+              </style>
+              <div className="doctor-image-container mb-4" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
+                {/* Background Image (Img3) */}
+                <img
+                  src={doctorImg3}
+                  alt="Dr. Jeyalakshmi Govindan consulting"
+                  className="crossfade-img img-3"
+                  loading="lazy"
+                />
+                {/* Middle Image (Img2) */}
+                <img
+                  src={doctorImg2}
+                  alt="Dr. Jeyalakshmi Govindan in clinic"
+                  className="crossfade-img img-2"
+                  loading="lazy"
+                />
+                {/* Foreground Image (Img1) */}
                 <img
                   src={doctorImg}
-                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB, cataract & glaucoma specialist in Chennai"
-                  className="doctor-image"
-                  width="1122"
-                  height="1402"
+                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB"
+                  className="crossfade-img img-1"
                   loading="lazy"
                 />
               </div>
@@ -84,10 +135,11 @@ const Doctor = () => {
             {/* Right Content: Bio, Education, etc. */}
             <div className="doctor-content slide-up delay-200">
               <h3 className="h2 text-primary">Biography</h3>
-              <p className="p-large" style={{ marginBottom: '1rem' }}>
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
                 Dr. Jeyalakshmi Govindan MBBS DO DNB is a senior ophthalmic surgeon with 20 years experience in the field of ophthalmology and specialized in cataract and glaucoma. Well trained from prestigious institutes like RIOGOH, Chennai, ICare Eye hospital & PG research institute, Noida, Aravind eye hospital, Tirunelveli, Eye associates, Sydney and Sankara Nethralaya, Chennai.
               </p>
-              <p className="p-large" style={{ marginBottom: '1rem' }}>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
                 She has served as senior consultant in Sankara Nethralaya for 12 years and has trained many budding ophthalmologists. She is known for handling any kind of patients with smile and patience. She is very approachable and can manage any complicated cataract and glaucoma cases with precision using the latest technology and equipment.
               </p>
               <p className="p-large" style={{ marginBottom: '2rem' }}>

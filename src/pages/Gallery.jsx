@@ -4,6 +4,7 @@ import { X, ZoomIn } from 'lucide-react';
 import '../styles/pages.css';
 import Seo from '../components/Seo';
 import { buildBreadcrumbSchema } from '../config/seoHelpers';
+import dscreening2Img from '../assets/images/ds/dscreening2.png';
 
 // ── Categorized image imports ──────────────────────────────────────────────
 const tnagarClinicModules = import.meta.glob('../assets/images/clinic/tnagar-*.{jpeg,jpg,png,webp}', { eager: true });
@@ -39,6 +40,13 @@ const images = [
   ...buildImages(patientModules, 'patients', 'Patients & Consultations'),
   ...buildImages(spectaclesModules, 'spectacles', 'Spectacles & Eyewear'),
   ...buildImages(equipmentModules, 'equipment', 'Equipment & Technology'),
+  {
+    id: 'screening-0',
+    src: dscreening2Img,
+    category: 'screening',
+    title: 'Diabetic Eye Screening',
+    subtitle: 'Screening',
+  },
   ...buildImages(eventModules, 'events', 'Events & Inauguration'),
   ...buildImages(awardsModules, 'awards', 'Awards & Recognition'),
 ];
@@ -50,6 +58,7 @@ const CATEGORIES = [
   { key: 'patients', label: 'Patients' },
   { key: 'spectacles', label: 'Spectacles' },
   { key: 'equipment', label: 'Equipment' },
+  { key: 'screening', label: 'Screening' },
   { key: 'events', label: 'Events' },
   { key: 'awards', label: 'Awards' },
 ];
