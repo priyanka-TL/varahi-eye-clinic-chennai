@@ -4,6 +4,7 @@ import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phon
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
 import doctorImg2 from '../assets/images/doctor_photo/doctor1.png';
+import doctorImg3 from '../assets/images/doctor_photo/doctor2.png';
 import Seo from '../components/Seo';
 import { buildPhysicianSchema, buildBreadcrumbSchema } from '../config/seoHelpers';
 
@@ -40,43 +41,60 @@ const Doctor = () => {
             <div className="slide-up">
               <style>
                 {`
-                  @keyframes crossfade {
-                    0%, 40% { opacity: 1; }
-                    50%, 90% { opacity: 0; }
+                  @keyframes fade1 {
+                    0%, 26.6% { opacity: 1; }
+                    33.3%, 93.3% { opacity: 0; }
                     100% { opacity: 1; }
                   }
-                  .crossfade-base {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    display: block;
+                  @keyframes fade2 {
+                    0%, 60% { opacity: 1; }
+                    66.6%, 100% { opacity: 0; }
                   }
-                  .crossfade-top {
+                  .crossfade-img {
                     position: absolute;
                     top: 0;
                     left: 0;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    display: block;
+                  }
+                  .img-1 {
+                    z-index: 3;
                     object-position: center top;
-                    animation: crossfade 8s infinite;
+                    animation: fade1 15s infinite;
+                  }
+                  .img-2 {
+                    z-index: 2;
+                    object-position: bottom right;
+                    animation: fade2 15s infinite;
+                  }
+                  .img-3 {
+                    z-index: 1;
+                    object-position: center;
                   }
                 `}
               </style>
               <div className="doctor-image-container mb-4" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
-                {/* Background Image */}
+                {/* Background Image (Img3) */}
+                <img
+                  src={doctorImg3}
+                  alt="Dr. Jeyalakshmi Govindan consulting"
+                  className="crossfade-img img-3"
+                  loading="lazy"
+                />
+                {/* Middle Image (Img2) */}
                 <img
                   src={doctorImg2}
                   alt="Dr. Jeyalakshmi Govindan in clinic"
-                  className="crossfade-base"
-                  style={{ objectPosition: 'bottom right' }}
+                  className="crossfade-img img-2"
                   loading="lazy"
                 />
-                {/* Foreground Image (Fades in and out) */}
+                {/* Foreground Image (Img1) */}
                 <img
                   src={doctorImg}
                   alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB"
-                  className="crossfade-top"
+                  className="crossfade-img img-1"
                   loading="lazy"
                 />
               </div>
