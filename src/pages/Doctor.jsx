@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
+import doctorImg2 from '../assets/images/doctor_photo/doctor1.png';
 import Seo from '../components/Seo';
 import { buildPhysicianSchema, buildBreadcrumbSchema } from '../config/seoHelpers';
 
@@ -37,13 +38,19 @@ const Doctor = () => {
 
             {/* Left Sidebar: Photo & Quick Info */}
             <div className="slide-up">
-              <div className="doctor-image-container mb-4">
+              <div className="doctor-image-container mb-4" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <img
                   src={doctorImg}
                   alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB, cataract & glaucoma specialist in Chennai"
                   className="doctor-image"
                   width="1122"
                   height="1402"
+                  loading="lazy"
+                />
+                <img
+                  src={doctorImg2}
+                  alt="Dr. Jeyalakshmi Govindan"
+                  className="doctor-image"
                   loading="lazy"
                 />
               </div>

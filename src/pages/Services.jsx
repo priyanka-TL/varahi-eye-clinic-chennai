@@ -7,7 +7,7 @@ import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
 import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
 import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
 import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
-import imgDiabetic from '../assets/images/services_nethra/retina-vitreous.webp';
+import imgDiabetic from '../assets/images/ds/dscreening2.png';
 import Seo from '../components/Seo';
 import { buildBreadcrumbSchema } from '../config/seoHelpers';
 import { SITE_URL } from '../config/site';
@@ -160,7 +160,7 @@ const Services = () => {
             </div>
             <div className="slide-up delay-200">
               <img
-                src={spectaclesImg}
+                src={imgGlasses}
                 alt="Spectacles and frames display at Sree Varahi Eye Clinic's in-house optical store, T. Nagar, Chennai"
                 className="about-image"
                 width="1280"
