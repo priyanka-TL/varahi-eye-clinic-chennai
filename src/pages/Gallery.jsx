@@ -20,6 +20,7 @@ const titleFromFile = (path) => {
   const name = path.split('/').pop().replace(/\.\w+$/, '');
   return name
     .replace(/^(tnagar|kilpauk)-/, '')
+    .replace(/^\d+-/, '')
     .replace(/-\d+$/, '')
     .replace(/-/g, ' ')
     .replace(/\b\w/g, c => c.toUpperCase());

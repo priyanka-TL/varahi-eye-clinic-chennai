@@ -127,7 +127,7 @@ const Doctor = () => {
                 She has served as senior consultant in Sankara Nethralaya for 12 years and has trained many budding ophthalmologists. She is known for handling any kind of patients with smile and patience. She is very approachable and can manage any complicated cataract and glaucoma cases with precision using the latest technology and equipment.
               </p>
               <p className="p-large" style={{ marginBottom: '2rem' }}>
-                Dr. Jeyalakshmi also offers her expert opinion in glaucoma at <Link to="/contact#taramani">VHS, Taramani</Link>, <Link to="/contact#annanagar">Dhanvantri Eye Care, Anna Nagar</Link> & <Link to="/contact#virugambakkam">Keshava Eye Care, Virugambakkam</Link>, all in Chennai.
+                Dr. Jeyalakshmi also provides comprehensive eye care treatments and expert consultations across various prominent locations in Chennai, including <Link to="/contact#taramani">VHS, Taramani</Link>, <Link to="/contact#annanagar">Dhanvantri Eye Care, Anna Nagar</Link>, and <Link to="/contact#virugambakkam">Keshava Eye Care, Virugambakkam</Link>.
               </p>
 
               <div className="doctor-cards-grid">
