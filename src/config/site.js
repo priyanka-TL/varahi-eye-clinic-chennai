@@ -91,7 +91,7 @@ export const LOCATIONS = [
     addressRegion: 'Tamil Nadu',
     postalCode: '600092',
     timing: 'Tuesday or Friday: 2:30 PM (By Appointment)',
-    badge: 'Tue & Fri (By Appointment)',
+    badge: 'Tue or Fri (By Appointment)',
     mapLink: 'https://maps.app.goo.gl/VJcFHfzD6y3VpPpB8?g_st=iw',
     openingHours: [{ days: ['Tuesday', 'Friday'], opens: '14:30', closes: '18:00' }],
   },
