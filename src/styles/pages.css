@@ -1158,10 +1158,9 @@
 
 .location-card-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  flex-wrap: wrap;
 }
 
 .location-title {

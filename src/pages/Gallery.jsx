@@ -20,6 +20,7 @@ const titleFromFile = (path) => {
   const name = path.split('/').pop().replace(/\.\w+$/, '');
   return name
     .replace(/^(tnagar|kilpauk)-/, '')
+    .replace(/^\d+-/, '')
     .replace(/-\d+$/, '')
     .replace(/-/g, ' ')
     .replace(/\b\w/g, c => c.toUpperCase());
@@ -34,7 +35,11 @@ const buildImages = (modules, category, label) =>
     subtitle: titleFromFile(path),
   }));
 
-const images = [
+import img1 from '../assets/images/clinic/tnagar-00-doctor-at-desk.jpeg';
+import img2 from '../assets/images/events/tnagar-inauguration-ribbon-cutting-01.jpeg';
+import img3 from '../assets/images/ds/dscreening2.png';
+
+const allBuiltImages = [
   ...buildImages(tnagarClinicModules, 't-nagar', 'T. Nagar Branch'),
   ...buildImages(kilpaukClinicModules, 'kilpauk', 'Kilpauk Branch'),
   ...buildImages(patientModules, 'patients', 'Patients & Consultations'),
@@ -50,6 +55,12 @@ const images = [
   ...buildImages(eventModules, 'events', 'Events & Inauguration'),
   ...buildImages(awardsModules, 'awards', 'Awards & Recognition'),
 ];
+
+const topImagesSrc = [img1, img2, img3];
+const topImages = topImagesSrc.map(src => allBuiltImages.find(img => img.src === src)).filter(Boolean);
+const otherImages = allBuiltImages.filter(img => !topImagesSrc.includes(img.src));
+
+const images = [...topImages, ...otherImages];
 
 const CATEGORIES = [
   { key: 'all', label: 'All' },

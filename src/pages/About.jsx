@@ -35,7 +35,7 @@ const About = () => {
               <span className="section-subtitle">About Sree Varahi eye clinic</span>
               <h2 className="section-title h2">Quality Care & Patient Centered Services</h2>
               <p className="p-large" style={{ marginBottom: '2rem' }}>
-                As the name sounds pious and pure, this center offers quality care and patient centered services. This clinic also provides ethical, economical medical treatment for all ages, including specialized Pediatric Eye care and surgical treatment related to cataract and glaucoma for adults and elderly by an expert ophthalmologist in the center of the city with good ambience and parking facility.
+                As the name sounds pious and pure, this center offers quality care and patient centered services. This clinic also provides ethical, economical medical treatment for all ages, including Pediatric Eye care and surgical treatment related to cataract and glaucoma for adults and elderly by an expert ophthalmologist in the center of the city with good ambience and parking facility.
               </p>
 
               <div className="about-features">
