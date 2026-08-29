@@ -58,10 +58,10 @@ export const LOCATIONS = [
     addressRegion: 'Tamil Nadu',
     postalCode: '600010',
     landmark: 'Next to Sangam theatre',
-    timing: 'Mon to Sat (except Thursdays): Morning 9:30 AM - 2:00 PM',
-    badge: 'Morning Clinic (Mon-Sat except Thu)',
+    timing: 'All Days (Except Thursday): Morning 9:30 AM - 2:00 PM',
+    badge: 'Morning Clinic (All Days except Thu)',
     mapLink: 'https://www.google.com/maps/search/Kumaran+Hospitals+214+PH+Road+Kilpauk+Chennai',
-    openingHours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday'], opens: '09:30', closes: '14:00' }],
+    openingHours: [{ days: ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday'], opens: '09:30', closes: '14:00' }],
     isPrimary: true,
   },
   {
