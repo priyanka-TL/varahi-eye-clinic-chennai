@@ -41,14 +41,10 @@ const Doctor = () => {
             <div className="slide-up">
               <style>
                 {`
-                  @keyframes fade1 {
-                    0%, 26.6% { opacity: 1; }
-                    33.3%, 93.3% { opacity: 0; }
+                  @keyframes fade-img {
+                    0%, 40% { opacity: 1; }
+                    50%, 90% { opacity: 0; }
                     100% { opacity: 1; }
-                  }
-                  @keyframes fade2 {
-                    0%, 60% { opacity: 1; }
-                    66.6%, 100% { opacity: 0; }
                   }
                   .crossfade-img {
                     position: absolute;
@@ -59,42 +55,30 @@ const Doctor = () => {
                     object-fit: cover;
                     display: block;
                   }
-                  .img-1 {
-                    z-index: 3;
-                    object-position: center top;
-                    animation: fade1 15s infinite;
-                  }
-                  .img-2 {
+                  .img-top {
                     z-index: 2;
                     object-position: bottom right;
-                    animation: fade2 15s infinite;
+                    animation: fade-img 10s infinite;
                   }
-                  .img-3 {
+                  .img-bottom {
                     z-index: 1;
                     object-position: center;
                   }
                 `}
               </style>
               <div className="doctor-image-container mb-4" style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
-                {/* Background Image (Img3) */}
+                {/* Background Image */}
                 <img
                   src={doctorImg3}
                   alt="Dr. Jeyalakshmi Govindan consulting"
-                  className="crossfade-img img-3"
+                  className="crossfade-img img-bottom"
                   loading="lazy"
                 />
-                {/* Middle Image (Img2) */}
+                {/* Foreground Image */}
                 <img
                   src={doctorImg2}
                   alt="Dr. Jeyalakshmi Govindan in clinic"
-                  className="crossfade-img img-2"
-                  loading="lazy"
-                />
-                {/* Foreground Image (Img1) */}
-                <img
-                  src={doctorImg}
-                  alt="Dr. Jeyalakshmi Govindan, MBBS DO DNB"
-                  className="crossfade-img img-1"
+                  className="crossfade-img img-top"
                   loading="lazy"
                 />
               </div>
