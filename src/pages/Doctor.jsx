@@ -1,12 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity } from 'lucide-react';
+import { Award, GraduationCap, Microscope, BookOpen, Stethoscope, Calendar, Phone, Activity, MapPin } from 'lucide-react';
 import '../styles/pages.css';
 import doctorImg from '../assets/images/doctor_photo/drJayalakshmiMainPage.jpg';
 import doctorImg2 from '../assets/images/doctor_photo/doctor1.png';
 import doctorImg3 from '../assets/images/doctor_photo/doctor2.png';
 import Seo from '../components/Seo';
 import { buildPhysicianSchema, buildBreadcrumbSchema } from '../config/seoHelpers';
+
+const ConsultationLocationsCard = () => (
+  <div className="card" style={{ marginTop: '1.5rem' }}>
+    <h4 className="h4" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+      <MapPin className="text-secondary" /> Consultation Locations
+    </h4>
+    <p className="p-large" style={{ marginBottom: '1.5rem' }}>
+      Dr. Jeyalakshmi provides comprehensive ophthalmic consultations and specialist cataract and glaucoma care at prominent locations in Chennai:
+    </p>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+      <Link to="/contact#taramani" className="location-card">
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+          <MapPin className="text-primary" size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
+          <div>
+            <h5 style={{ margin: '0 0 0.25rem 0', fontSize: '1rem', color: 'var(--color-text)' }}>VHS</h5>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Taramani</p>
+          </div>
+        </div>
+      </Link>
+      <Link to="/contact#annanagar" className="location-card">
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+          <MapPin className="text-primary" size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
+          <div>
+            <h5 style={{ margin: '0 0 0.25rem 0', fontSize: '1rem', color: 'var(--color-text)' }}>Dhanvantri Eye Care</h5>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Anna Nagar</p>
+          </div>
+        </div>
+      </Link>
+      <Link to="/contact#virugambakkam" className="location-card">
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+          <MapPin className="text-primary" size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
+          <div>
+            <h5 style={{ margin: '0 0 0.25rem 0', fontSize: '1rem', color: 'var(--color-text)' }}>Keshava Eye Care</h5>
+            <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Virugambakkam</p>
+          </div>
+        </div>
+      </Link>
+    </div>
+    <style>
+      {`
+        .location-card {
+          display: block;
+          padding: 1rem;
+          background-color: var(--color-bg, #ffffff);
+          border-radius: var(--radius-md);
+          text-decoration: none;
+          border: 1px solid var(--color-border);
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .location-card:hover {
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-sm);
+          border-color: var(--color-primary);
+        }
+        .location-card:hover .text-primary {
+          color: var(--color-secondary);
+        }
+      `}
+    </style>
+  </div>
+);
 
 const Doctor = () => {
   return (
@@ -114,21 +176,51 @@ const Doctor = () => {
                   Book Consultation
                 </Link>
               </div>
+
+              {/* Consultation Locations (Desktop Only) */}
+              <div className="hide-on-mobile slide-up delay-300">
+                <ConsultationLocationsCard />
+              </div>
             </div>
 
             {/* Right Content: Bio, Education, etc. */}
             <div className="doctor-content slide-up delay-200">
               <h3 className="h2 text-primary">Biography</h3>
+
               <p className="p-large" style={{ marginBottom: '1.5rem' }}>
-                Dr. Jeyalakshmi Govindan MBBS DO DNB is a senior ophthalmic surgeon with 20 years experience in the field of ophthalmology and specialized in cataract and glaucoma. Well trained from prestigious institutes like RIOGOH, Chennai, ICare Eye hospital & PG research institute, Noida, Aravind eye hospital, Tirunelveli, Eye associates, Sydney and Sankara Nethralaya, Chennai.
+                <strong>Dr. Jeyalakshmi Govindan, MBBS, DO, DNB</strong>, is a senior ophthalmic surgeon with 20 years of experience in ophthalmology, with special expertise in the diagnosis and management of cataract and glaucoma. She is particularly experienced in managing complex cataract and glaucoma cases, combining meticulous clinical assessment, surgical precision, and the use of modern technology to deliver personalised, high-quality eye care.
               </p>
 
               <p className="p-large" style={{ marginBottom: '1.5rem' }}>
-                She has served as senior consultant in Sankara Nethralaya for 12 years and has trained many budding ophthalmologists. She is known for handling any kind of patients with smile and patience. She is very approachable and can manage any complicated cataract and glaucoma cases with precision using the latest technology and equipment.
+                Dr. Jeyalakshmi has undergone extensive training at some of the most respected ophthalmic institutions in India and abroad, including RIOGOH, Chennai; ICARE Eye Hospital & Postgraduate Institute, Noida; Aravind Eye Hospital, Tirunelveli; Eye Associates, Sydney; and Sankara Nethralaya, Chennai. This broad training has given her a strong foundation in both comprehensive ophthalmology and the specialised management of cataract and glaucoma.
               </p>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
+                She served as a Senior Consultant at Sankara Nethralaya for 12 years, where she gained extensive experience in managing a wide spectrum of ophthalmic conditions and challenging surgical cases. During her tenure, she also had the privilege of training and mentoring many budding ophthalmologists, contributing to the development of the next generation of eye-care professionals.
+              </p>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
+                Dr. Jeyalakshmi has a particular interest in advanced cataract surgery and glaucoma care. She is experienced in evaluating and treating patients with a wide range of cataract presentations, including complicated and challenging cataract cases, with an emphasis on careful planning, precision, safety, and optimal visual outcomes.
+              </p>
+
               <p className="p-large" style={{ marginBottom: '2rem' }}>
-                Dr. Jeyalakshmi also provides comprehensive eye care treatments and expert consultations across various prominent locations in Chennai, including <Link to="/contact#taramani">VHS, Taramani</Link>, <Link to="/contact#annanagar">Dhanvantri Eye Care, Anna Nagar</Link>, and <Link to="/contact#virugambakkam">Keshava Eye Care, Virugambakkam</Link>.
+                In glaucoma, she provides comprehensive care ranging from early detection and accurate diagnosis to long-term medical and surgical management. Her approach focuses not only on controlling eye pressure but also on protecting the optic nerve and preserving vision over the long term. Her experience in managing complex glaucoma cases enables her to tailor treatment according to each patient's individual needs.
               </p>
+
+              <h4 className="h3 text-secondary" style={{ marginBottom: '1rem' }}>A Patient-Centred Approach</h4>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
+                Beyond her surgical expertise, Dr. Jeyalakshmi is known for her warm, approachable, and compassionate manner. She believes that good eye care begins with listening to patients carefully, understanding their concerns, and explaining their condition and treatment options clearly.
+              </p>
+
+              <p className="p-large" style={{ marginBottom: '1.5rem' }}>
+                Her calm demeanour, patience, and ability to handle patients with a reassuring smile have made her a trusted choice for patients seeking specialist care, particularly those requiring treatment for cataract and glaucoma.
+              </p>
+
+              <p className="p-large" style={{ marginBottom: '2rem' }}>
+                With two decades of clinical experience, extensive specialist training, 12 years as a Senior Consultant at Sankara Nethralaya, and a commitment to adopting modern advances in ophthalmology, Dr. Jeyalakshmi strives to provide precise, ethical, and personalised eye care to every patient.
+              </p>
+
 
               <div className="doctor-cards-grid">
                 <div className="card">
@@ -182,11 +274,27 @@ const Doctor = () => {
                 </ul>
               </div>
 
+              {/* Consultation Locations (Mobile Only) */}
+              <div className="hide-on-desktop">
+                <ConsultationLocationsCard />
+              </div>
+
             </div>
 
           </div>
         </div>
       </section>
+
+      <style>
+        {`
+          @media (max-width: 991px) {
+            .hide-on-mobile { display: none !important; }
+          }
+          @media (min-width: 992px) {
+            .hide-on-desktop { display: none !important; }
+          }
+        `}
+      </style>
     </div>
   );
 };

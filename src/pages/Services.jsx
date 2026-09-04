@@ -6,8 +6,9 @@ import spectaclesImg from '../assets/images/spectacles/tnagar-spectacles-display
 import imgGlasses from '../assets/images/spectacles/glasses-checkup-edited.png';
 import imgCataract from '../assets/images/patients/cataract-surgery-edited.png';
 import imgGlaucoma from '../assets/images/services_nethra/glaucoma.webp';
-import imgComputerVision from '../assets/images/services_nethra/cornea-refractive.webp';
+import imgComputerVision from '../assets/images/services_nethra/computerVision.jpeg';
 import imgDiabetic from '../assets/images/ds/dscreening2.png';
+import imgPediatric from '../assets/images/services_nethra/pediatric.jpeg';
 import Seo from '../components/Seo';
 import { buildBreadcrumbSchema } from '../config/seoHelpers';
 import { SITE_URL } from '../config/site';
@@ -58,6 +59,15 @@ const Services = () => {
       desc: 'Specialized screening to detect and manage diabetic retinopathy early.',
       benefits: ['Prevents severe vision loss', 'Early detection', 'Timely treatment'],
       process: 'Dilated fundus exam, detailed retinal evaluation, and targeted therapy if needed.'
+    },
+    {
+      slug: 'pediatric-eye-care',
+      title: 'Pediatric Eye Care',
+      icon: <Users size={40} />,
+      img: imgPediatric,
+      desc: 'Dedicated to personalized care and treatment for children’s vision needs.',
+      benefits: ['Child-friendly environment', 'Early detection of squints', 'Myopia control'],
+      process: 'Vision assessment, refraction testing, and customized treatment plans for children.'
     }
   ];
 
