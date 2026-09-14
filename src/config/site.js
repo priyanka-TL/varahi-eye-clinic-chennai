@@ -1,7 +1,7 @@
 // Central place for all site-wide SEO / business identity values.
 // When the custom domain is ready, change SITE_URL here — every canonical
 // tag, Open Graph tag, sitemap entry, and JSON-LD block reads from this file.
-export const SITE_URL = 'https://priyanka-tl.github.io/varahi-eye-clinic-chennai';
+export const SITE_URL = 'https://sreevarahieyeclinic.com';
 
 export const SITE_NAME = 'Sree Varahi Eye Clinic';
 
