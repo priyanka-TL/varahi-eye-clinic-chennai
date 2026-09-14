@@ -4,6 +4,8 @@ import { Quote, Star } from 'lucide-react';
 import '../styles/pages.css';
 import Seo from '../components/Seo';
 import { buildBreadcrumbSchema } from '../config/seoHelpers';
+import tnagarQR from '../assets/review/tnagarReviewQRCode.jpeg';
+import kilpaukQR from '../assets/review/kilipaukReviewQRCode.jpeg';
 
 const TestimonialCard = ({ testimonial, index }) => {
   const [expanded, setExpanded] = useState(false);
@@ -167,9 +169,10 @@ const Testimonials = () => {
                 <p className="review-qr-subtitle">T. Nagar, Chennai</p>
                 <div className="review-qr-code-wrapper">
                   <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent('https://www.google.com/maps/place/Sree+Varahi+Eye+Clinic+-+T.Nagar/@13.0436908,80.2429514,15z/data=!4m17!1m8!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!2sSree+Varahi+Eye+Clinic+-+T.Nagar!8m2!3d13.0435465!4d80.2429266!10e5!16s%2Fg%2F11lyvkzbr1!3m7!1s0x3a52678c3aea44ab:0xf439b6039ebec50c!8m2!3d13.0435465!4d80.2429266!9m1!1b1!16s%2Fg%2F11lyvkzbr1?entry=ttu&g_ep=EgoyMDI2MDYyOC4wIKXMDSoASAFQAw%3D%3D')}&color=0a2e5c&bgcolor=ffffff&margin=1`}
+                    src={tnagarQR}
                     alt="QR code to leave a Google Review for T. Nagar branch"
                     className="review-qr-img"
+                    style={{ borderRadius: '12px', mixBlendMode: 'multiply', maxWidth: '200px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
                   />
                 </div>
                 <p className="review-qr-instruction">📱 Scan with your phone camera</p>
@@ -189,9 +192,10 @@ const Testimonials = () => {
                 <p className="review-qr-subtitle">Kilpauk, Chennai</p>
                 <div className="review-qr-code-wrapper">
                   <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent('https://www.google.com/maps/search/Kumaran+Hospitals+214+PH+Road+Kilpauk+Chennai')}&color=0a2e5c&bgcolor=ffffff&margin=1`}
+                    src={kilpaukQR}
                     alt="QR code to leave a Google Review for Kilpauk branch"
                     className="review-qr-img"
+                    style={{ borderRadius: '12px', mixBlendMode: 'multiply', maxWidth: '200px', width: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
                   />
                 </div>
                 <p className="review-qr-instruction">📱 Scan with your phone camera</p>

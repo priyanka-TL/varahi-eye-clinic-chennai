@@ -24,8 +24,8 @@ const Terms = lazy(() => import('./pages/Terms'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Vite's `base` (see vite.config.js) — also used as the router's basename
-// so app URLs resolve under /varahi-eye-clinic-chennai/ on GitHub Pages.
-const BASENAME = '/varahi-eye-clinic-chennai';
+// so app URLs resolve correctly in both development and production.
+const BASENAME = import.meta.env.BASE_URL;
 
 // Scroll to top on route change, or to the target element when the URL
 // includes a hash (e.g. /services#cataract-surgery from internal links).
