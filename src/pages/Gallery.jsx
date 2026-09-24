@@ -27,8 +27,8 @@ const titleFromFile = (path) => {
 };
 
 const buildImages = (modules, category, label) =>
-  Object.entries(modules).map(([path, mod], index) => ({
-    id: `${category}-${index}`,
+  Object.entries(modules).map(([path, mod]) => ({
+    id: path.replace(/^.*\//, '').replace(/\.\w+$/, ''), // filename without extension — always unique
     src: mod.default,
     category,
     title: label,
@@ -73,36 +73,32 @@ const CATEGORIES = [
   { key: 'awards', label: 'Awards' },
 ];
 
-// Matches the breakpoints in pages.css (.gallery-grid)
-const getColumnCount = (width) => {
-  if (width >= 1200) return 4;
-  if (width >= 992) return 3;
-  if (width >= 576) return 2;
-  return 1;
-};
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('all');
-  const [columnCount, setColumnCount] = useState(() =>
-    typeof window === 'undefined' ? 4 : getColumnCount(window.innerWidth)
-  );
+  const [columns, setColumns] = useState(4);
 
   useEffect(() => {
-    const handleResize = () => setColumnCount(getColumnCount(window.innerWidth));
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const updateColumns = () => {
+      if (window.innerWidth >= 1200) setColumns(4);
+      else if (window.innerWidth >= 768) setColumns(3);
+      else if (window.innerWidth >= 480) setColumns(2);
+      else setColumns(1);
+    };
+    updateColumns();
+    window.addEventListener('resize', updateColumns);
+    return () => window.removeEventListener('resize', updateColumns);
   }, []);
 
   const filteredImages = filter === 'all'
     ? images
     : images.filter(img => img.category === filter);
 
-  // True masonry: distribute images round-robin across columns so each
-  // column simply stacks its own photos with no reserved dead space.
-  const columns = Array.from({ length: columnCount }, () => []);
+  // Distribute images into column arrays
+  const columnWrappers = Array.from({ length: columns }, () => []);
   filteredImages.forEach((img, index) => {
-    columns[index % columnCount].push({ img, index });
+    columnWrappers[index % columns].push(img);
   });
 
   return (
@@ -150,11 +146,11 @@ const Gallery = () => {
             {filter !== 'all' && ` · ${CATEGORIES.find(c => c.key === filter)?.label}`}
           </p>
 
-          {/* Masonry Grid */}
-          <div className="gallery-grid">
-            {columns.map((column, colIndex) => (
-              <div className="gallery-column" key={colIndex}>
-                {column.map(({ img, index }) => (
+          {/* Masonry Grid — React-based for perfect distribution */}
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+            {columnWrappers.map((col, colIndex) => (
+              <div key={colIndex} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1, minWidth: 0 }}>
+                {col.map((img, index) => (
                   <div
                     key={img.id}
                     className={`gallery-item slide-up delay-${(index % 4) * 100}`}
