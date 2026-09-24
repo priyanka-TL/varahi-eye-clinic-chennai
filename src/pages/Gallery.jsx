@@ -44,7 +44,7 @@ const allBuiltImages = [
   ...buildImages(kilpaukClinicModules, 'kilpauk', 'Kilpauk Branch'),
   ...buildImages(patientModules, 'patients', 'Patients & Consultations'),
   ...buildImages(spectaclesModules, 'spectacles', 'Spectacles & Eyewear'),
-  ...buildImages(equipmentModules, 'equipment', 'Equipment & Technology'),
+  ...buildImages(equipmentModules, 'kilpauk', 'Kilpauk Branch'),
   {
     id: 'screening-0',
     src: dscreening2Img,
@@ -68,7 +68,6 @@ const CATEGORIES = [
   { key: 'kilpauk', label: 'Kilpauk' },
   { key: 'patients', label: 'Patients' },
   { key: 'spectacles', label: 'Spectacles' },
-  { key: 'equipment', label: 'Equipment' },
   { key: 'screening', label: 'Screening' },
   { key: 'events', label: 'Events' },
   { key: 'awards', label: 'Awards' },
