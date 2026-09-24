@@ -9,7 +9,7 @@
     // 404 page. It re-encodes the path into a query string and redirects
     // to index.html, which decodes it back before React Router mounts.
     // Technique: https://github.com/rafgraph/spa-github-pages
-    var pathSegmentsToKeep = 1; // keeps '/varahi-eye-clinic-chennai'
+    var pathSegmentsToKeep = 0; // custom domain — no subdirectory prefix
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
